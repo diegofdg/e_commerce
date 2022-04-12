@@ -1,3 +1,14 @@
-@media (min-width: 1024px){
+@media (min-width: 1024px) {
+    .logo img {
+        width: 16.9rem;
+    }
     
+    .input-buscador {
+        width: 39.3rem;
+    }
+
+    .btn-login {
+        width: 18.2rem;
+        height: 5.1rem;
+    }
 }

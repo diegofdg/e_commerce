@@ -3,10 +3,11 @@
 :root {
     --fuente: 'Raleway', sans-serif;
 
-    --negro: #464646; 
+    --negro: #464646;
     --blanco: #FFFFFF;
     --celeste: #EAF2FD;
     --gris: #E5E5E5;
+    --grisClaro: #F5F5F5;
     --azul: #2A7AE4;
     --grisOscuro: #A2A2A2;
     --verde: #cff4fc;
@@ -19,7 +20,7 @@
 
 html {
     font-size: 62.5%;
-    box-sizing: border-box;     
+    box-sizing: border-box;
 }
 
 *, *:before, *:after {
@@ -31,8 +32,61 @@ html {
     margin: 0;
 }
 
-body { 
-    font-size: 1.6rem;    
+body {
+    font-size: 1.6rem;
     font-family: var(--fuente);
     color: var(--negro);
+}
+
+.contenedor {
+    max-width: 90%;
+    margin: 0 auto;
+    align-items: center;
+}
+
+/*** Header ***/
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.8rem 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 9.6rem;
+}
+
+.login-buscador {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.buscador {
+    display: flex;
+}
+
+.input-buscador {
+    display: none;
+}
+
+.btn-login {
+    display: inline-block;
+    color: var(--azul);
+    border: solid 1px var(--azul);
+    padding: 1.2rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    background-color: var(--blanco);
+    width: 13.3rem;
+    height: 4rem;
+}
+
+.icono-buscador {
+    width: 1.7rem;
 }
