@@ -1,0 +1,38 @@
+/*** Variables ***/
+
+:root {
+    --fuente: 'Raleway', sans-serif;
+
+    --negro: #464646; 
+    --blanco: #FFFFFF;
+    --celeste: #EAF2FD;
+    --gris: #E5E5E5;
+    --azul: #2A7AE4;
+    --grisOscuro: #A2A2A2;
+    --verde: #cff4fc;
+    --verdeOscuro: #008000;
+    --rosado: #f8d7da; 
+    --rojo: #842029;
+}
+
+/*** Globales ***/
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;     
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body { 
+    font-size: 1.6rem;    
+    font-family: var(--fuente);
+    color: var(--negro);
+}
