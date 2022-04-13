@@ -1,4 +1,7 @@
 @media (min-width: 1024px) {
+
+    /*** Header ***/
+
     .logo img {
         width: 16.9rem;
     }
@@ -10,5 +13,17 @@
     .btn-login {
         width: 18.2rem;
         height: 5.1rem;
+    }
+
+    /*** Hero ***/
+
+    .hero:before {        
+        background-color: rgba(0,0,0,0);
+    }
+
+    .btn-hero {        
+        font-size: 1.6rem;
+        font-weight: 400;
+        max-width: 12.9rem;
     }
 }

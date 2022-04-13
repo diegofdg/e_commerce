@@ -90,3 +90,65 @@ body {
 .icono-buscador {
     width: 1.7rem;
 }
+
+/*** Hero ***/
+
+.hero {    
+    background-image: url('../img/hero.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 19.2rem;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.hero:before {
+	content:'';
+	position: absolute;
+    top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0,0,0,0.2);
+}
+
+.hero-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.6rem 0;
+    width: 90%;
+    height: 100%;
+}
+
+.hero-div h1 {
+    position: relative;
+    color: var(--blanco);
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0;
+    margin-bottom: .8rem;
+}
+
+.hero-div p {
+    position: relative;
+    font-size: 1.4rem;
+    color: var(--blanco);
+    font-weight: 600;
+    margin: 0;
+    margin-bottom: .8rem;
+}
+
+.btn-hero {
+    position: relative;
+    display: inline-block;
+    background-color: var(--azul);
+    color: var(--blanco);
+    border: solid 1px var(--azul);
+    padding: 1.2rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    max-width: 11.8rem;
+}

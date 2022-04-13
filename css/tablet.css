@@ -1,4 +1,7 @@
 @media (min-width: 768px) {
+    
+    /*** Header ***/
+
     .login-buscador {
         flex-direction: row-reverse;
     }
@@ -24,9 +27,25 @@
         top: 1rem;
     }
 
-    .btn-login {        
+    .btn-login {
         width: 16.6rem;
         height: 4rem;
     }
+
+    /*** Hero ***/
+
+    .hero {
+        height: 35.2rem;
+    }
+
+    .hero-div h1 {
+        font-size: 5.2rem;
+        margin-bottom: 1.6rem;
+    }
     
+    .hero-div p {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-bottom: 1.6rem;
+    }
 }
