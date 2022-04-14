@@ -100,4 +100,10 @@
     .campo {
         margin-bottom: 1.4rem;
     }
+
+    /*** Footer ***/ 
+
+    .footer {
+        font-size: 1.6rem;
+    }
 }

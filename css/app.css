@@ -333,3 +333,21 @@ textarea {
     font-size: 1.6rem;
     font-weight: 400;
 }
+
+/*** Footer ***/ 
+
+.footer {
+    margin: 1.5rem;
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--color10);
+}
+  
+.footer .corazon {  
+    color: red;
+    font-weight: bold;
+}
+  
+.footer span {  
+    font-weight: bold;
+}
