@@ -154,7 +154,7 @@
             <a href="#">Ver todo <img src="img/icono_flecha.svg" alt="icono flecha"></a>
         </header>
         <div class="productos-div contenedor">
-            <div class="productos-card contenedor">
+            <div class="productos-card">
                 <img src="img/diversos_img_01.jpg" alt="imagen producto diversos_01">
                 <div>
                     <h4>Camisa Atari</h4>
@@ -204,8 +204,37 @@
             </div>
         </div>
     </section>
-    <section>
-        <h2>Contacto</h2>
+    <section class="contacto">
+        <div class="contacto-logo-nav">
+            <div class="contacto-logo">
+                <img src="img/logo.png" alt="logo empresa">
+            </div>
+            <nav class="contacto-nav">
+                <li>Quienes somos</li>
+                <li>Política de privacidad</li>
+                <li>Programa de fidelidad</li>
+                <li>Nuestras tiendas</li>
+                <li>Quiero ser franquiciado</li>
+                <li>Anuncie aquí</li>
+            </nav>
+        </div>
+        <div class="contacto-formulario">
+            <form class="formulario contenedor">
+                <h2>Hable con nosotros</h2>
+                <div class="contenedor-campos">
+                    <div class="campo">
+                        <label>Nombre</label>
+                        <input type="text" placeholder="Tu Nombre" required />
+                    </div>
+                    <div class="campo mensaje">
+                        <textarea class="text-area" placeholder="Escribe tu mensaje" required></textarea>
+                    </div>
+                </div>
+                <div>
+                    <input type="submit" class="btn-enviar" value="Enviar mensaje">
+                </div>
+            </form>
+        </div>
     </section>
     <footer>
         <h2>Footer</h2>

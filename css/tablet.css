@@ -68,4 +68,36 @@
     .productos-card img {
         max-width: 16.4rem;
     }
+
+    /*** Contacto ***/
+    .contacto {
+        flex-direction: row;
+        justify-content: space-between;
+        flex-grow: 1;
+    }
+
+    .contacto-logo {
+        margin: 0;
+    }
+
+    .contacto-logo-nav {
+        flex-grow: 1;
+        align-items: flex-start;
+        margin-left: 5%;
+    }
+
+    .contacto-nav {
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        margin-top: 0;
+    }
+
+    .contacto-formulario {
+        flex-grow: 1.5;
+    }
+
+    .campo {
+        margin-bottom: 1.4rem;
+    }
 }

@@ -38,21 +38,37 @@ body {
     color: var(--negro);
 }
 
+li {
+    list-style: none;
+}
+
 .contenedor {
     max-width: 90%;
     margin: 0 auto;
     align-items: center;
 }
 
+label {
+    display: block;
+}
+
+input,
+textarea {
+    border: none;
+    outline: none;
+}
+
 /*** Header ***/
 
-.header {
+.header,
+.contacto {
     display: flex;
     justify-content: space-between;
     padding: 1.8rem 0;
 }
 
-.logo {
+.logo,
+.contacto-logo {
     display: flex;
     align-items: center;
 }
@@ -224,4 +240,96 @@ body {
     font-size: 1.6rem;
     font-weight: 700;
     margin-bottom: 0.8rem;
+}
+
+/*** Contacto ***/
+
+.contacto {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    background-color: var(--celeste);
+}
+
+.contacto-logo-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.contacto-logo {
+    margin: 0 auto;
+}
+
+.contacto-nav {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 1.4rem;
+}
+
+.contacto-nav li {
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 3;
+}
+
+.logo img {
+    width: 17rem;
+}
+
+.formulario h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.contacto-formulario {
+    margin-top: 1rem;
+}
+
+.campo{
+    background-color: var(--blanco);
+    padding: 0rem 1rem .8rem;
+    margin: .8rem 0 2.4rem;
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+}
+
+.campo:last-child {
+    margin-bottom: .8rem;
+}
+
+.campo label{
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--grisOscuro);
+    padding: .8rem 0;
+}
+
+.campo input {
+    font-size: 1.6rem;
+    font-weight: 400;
+    width: 100%;
+    color: var(--rnegro);
+    padding-bottom: 0;
+}
+
+.campo.mensaje{
+    height: 81px;
+    padding-top: 1.6rem;
+}
+
+.input-text::placeholder{
+    color: var(--grisOscuro);
+    vertical-align: middle;
+}
+
+.btn-enviar {
+    display: inline-block;
+    margin-top: .5rem;
+    margin-bottom: 1.6rem;
+    background-color: var(--azul);
+    color: var(--blanco);
+    border: solid 1px var(--azul);
+    padding: 1.2rem;
+    font-size: 1.6rem;
+    font-weight: 400;
 }
