@@ -17,13 +17,32 @@
 
     /*** Hero ***/
 
-    .hero:before {        
+    .hero:before {
         background-color: rgba(0,0,0,0);
     }
 
-    .btn-hero {        
+    .btn-hero {
         font-size: 1.6rem;
         font-weight: 400;
         max-width: 12.9rem;
+    }
+
+    /*** Productos ***/
+
+    .productos-header h2 {
+        font-size: 3.2rem;
+    }
+
+    .productos-div {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    .productos-div .productos-card {
+        display: block;
+    }
+
+    .productos-card img {
+        max-width: 100%;
+        max-height: 100%;
     }
 }

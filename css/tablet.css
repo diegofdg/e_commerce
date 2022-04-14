@@ -48,4 +48,24 @@
         font-weight: 700;
         margin-bottom: 1.6rem;
     }
+
+    /*** Productos ***/
+
+    .productos-header a,
+    .productos-card a {
+        font-size: 1.6rem;
+        gap: 1.2rem;
+    }
+
+    .productos-header a img {
+        width: 1.6rem;
+    }
+
+    .productos-div {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .productos-card img {
+        max-width: 16.4rem;
+    }
 }
