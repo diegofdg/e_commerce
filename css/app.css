@@ -6,10 +6,11 @@
     --negro: #464646;
     --blanco: #FFFFFF;
     --celeste: #EAF2FD;
+    --grisBlanco: #C8C8C8;
     --gris: #E5E5E5;
     --grisClaro: #F5F5F5;
-    --azul: #2A7AE4;
     --grisOscuro: #A2A2A2;
+    --azul: #2A7AE4;
     --verde: #cff4fc;
     --verdeOscuro: #008000;
     --rosado: #f8d7da; 
@@ -58,6 +59,10 @@ textarea {
     outline: none;
 }
 
+a {
+    text-decoration: none;
+}
+
 /*** Header ***/
 
 .header,
@@ -74,13 +79,13 @@ textarea {
 }
 
 .logo img {
-    width: 9.6rem;
+    width: 12rem;
 }
 
 .login-buscador {
     display: flex;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -103,6 +108,12 @@ textarea {
     background-color: var(--blanco);
     width: 13.3rem;
     height: 4rem;
+    cursor: pointer;
+}
+
+.btn-login a,
+.btn-login a:visited {
+    color: var(--azul);
 }
 
 .icono-buscador {
@@ -244,7 +255,8 @@ textarea {
 
 /*** Contacto ***/
 
-.contacto {
+.contacto,
+.login {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
@@ -272,32 +284,30 @@ textarea {
     line-height: 3;
 }
 
-.logo img {
-    width: 17rem;
-}
-
 .formulario h2 {
     font-size: 1.6rem;
     font-weight: 700;
 }
 
-.contacto-formulario {
+.contacto-formulario, 
+.login-formulario {
     margin-top: 1rem;
 }
 
-.campo{
+.campo {
     background-color: var(--blanco);
     padding: 0rem 1rem .8rem;
     margin: .8rem 0 2.4rem;
     border-top-left-radius: .5rem;
     border-top-right-radius: .5rem;
+    border-bottom: 1px solid var(--grisBlanco);
 }
 
 .campo:last-child {
     margin-bottom: .8rem;
 }
 
-.campo label{
+.campo label {
     font-size: 1.2rem;
     font-weight: 400;
     color: var(--grisOscuro);
@@ -308,16 +318,16 @@ textarea {
     font-size: 1.6rem;
     font-weight: 400;
     width: 100%;
-    color: var(--rnegro);
+    color: var(--negro);
     padding-bottom: 0;
 }
 
-.campo.mensaje{
+.campo.mensaje {
     height: 81px;
     padding-top: 1.6rem;
 }
 
-.input-text::placeholder{
+.input-text::placeholder {
     color: var(--grisOscuro);
     vertical-align: middle;
 }
@@ -342,12 +352,86 @@ textarea {
     font-size: 1.2rem;
     color: var(--color10);
 }
-  
-.footer .corazon {  
+ 
+.footer .corazon {
     color: red;
     font-weight: bold;
 }
   
 .footer span {  
     font-weight: bold;
+}
+
+
+/*** Pagina Productos ***/
+
+.hero-producto-div img {
+    width: 100%;
+}
+
+.hero-producto-div .contenedor h4 {
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin-top: 1.6rem;
+    margin-bottom: .8rem;
+}
+
+.precio {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+}
+
+.descripcion {
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 3.2rem;
+}
+
+/*** Login ***/
+
+.login-div {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding-top: 10rem;
+    background-color: var(--grisClaro);
+}
+
+.login-formulario h2 {
+    text-align: center;
+    margin-bottom: 1.6rem;
+}
+
+.campo-login {
+    background-color: var(--blanco);
+    padding: 1rem;
+    margin: .8rem auto 1.6rem;
+    border-radius: .5rem;
+    width: 27.5rem;
+}
+
+.campo-login:last-child {
+    border-bottom: 1px solid var(--grisBlanco);
+    margin-bottom: .8rem;
+}
+
+.campo-login input {
+    font-size: 1.6rem;
+    font-weight: 400;
+    width: 100%;
+    color: var(--negro);
+}
+
+.contenedor-btn-login {
+    display: flex;
+    justify-content: center;
+}
+
+.contenedor-btn-login .btn-enviar {
+    font-size: 1.6rem;
+    font-weight: 400;
+    width: 10.9rem;
+    margin-top: .8rem;
+    margin-bottom: 7.6rem;
 }

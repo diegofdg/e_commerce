@@ -106,4 +106,13 @@
     .footer {
         font-size: 1.6rem;
     }
+
+    /*** Pagina Producto ***/
+
+    .hero-producto-div {
+        max-width: 90%;
+        display: flex;
+        margin: 0 auto;
+        gap: 1.6rem;
+    }
 }

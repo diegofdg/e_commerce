@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <title>AluraGeek</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/tablet.css">
+    <link rel="stylesheet" href="css/desktop.css">
+</head>
+<body>
+    <header class="header contenedor">
+        <div class="logo">
+            <a href="index.html"><img src="img/logo.png" alt="logo empresa"></a>
+        </div>
+        <div class="login-buscador">
+            <div class="login">
+                <a href="login.html"><button type="button" class="btn-login">Login</button></a>
+            </div>
+            <div class="buscador">
+                <input type="text" class="input-buscador" placeholder="¿Qué deseas buscar?">
+                <img src="img/icono_lupa.svg" class="icono-buscador" alt="icono buscador">
+            </div>
+        </div>
+    </header>
+    
+    <section class="login-div">
+        <div class="login-formulario">
+            <form class="formulario contenedor">
+                <h2>Iniciar Sesión</h2>
+                <div class="contenedor-login">
+                    <div class="campo-login">                        
+                        <input type="text" placeholder="Escriba su correo electrónico" required />
+                    </div>
+                    <div class="campo-login">
+                        <input type="text" placeholder="Escriba su contraseña" required />
+                    </div>
+                </div>
+                <div class="contenedor-btn-login">
+                    <input type="submit" class="btn-enviar" value="Entrar">
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section class="contacto">
+        <div class="contacto-logo-nav">
+            <div class="contacto-logo">
+                <img src="img/logo.png" alt="logo empresa">
+            </div>
+            <nav class="contacto-nav">
+                <li>Quienes somos</li>
+                <li>Política de privacidad</li>
+                <li>Programa de fidelidad</li>
+                <li>Nuestras tiendas</li>
+                <li>Quiero ser franquiciado</li>
+                <li>Anuncie aquí</li>
+            </nav>
+        </div>
+        <div class="contacto-formulario">
+            <form class="formulario contenedor">
+                <h2>Hable con nosotros</h2>
+                <div class="contenedor-campos">
+                    <div class="campo">
+                        <label>Nombre</label>
+                        <input type="text" placeholder="Tu Nombre" required />
+                    </div>
+                    <div class="campo mensaje">
+                        <textarea class="text-area" placeholder="Escribe tu mensaje" required></textarea>
+                    </div>
+                </div>
+                <div>
+                    <input type="submit" class="btn-enviar" value="Enviar mensaje">
+                </div>
+            </form>
+        </div>
+    </section>
+    
+    <footer class="footer contenedor">
+        <p>Hecho con <span class="corazon">❤</span> por <span>Diego Fabián Di Giorgio</span> | &copy; 2022</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

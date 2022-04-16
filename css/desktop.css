@@ -3,7 +3,7 @@
     /*** Header ***/
 
     .logo img {
-        width: 16.9rem;
+        width: 17.6rem;
     }
     
     .input-buscador {
@@ -56,5 +56,33 @@
 
     .contacto-nav li {
         line-height: 2.6;
+    }
+
+    /*** Pagina Producto ***/
+
+    .hero-producto-div {
+        max-width: 90%;
+        display: flex;
+        margin: 0 auto;
+        gap: 1.6rem;
+    }
+
+    .hero-producto-div div,
+    .hero-producto-div img {
+        width: 50%;
+    }
+
+    /*** Login ***/
+
+    .login-formulario h2 {
+        font-size: 1.8rem;
+    }
+
+    .campo-login {
+        width: 42.3rem;
+    }
+
+    .contenedor-btn-login .btn-enviar {
+        width: 42.3rem;
     }
 }
