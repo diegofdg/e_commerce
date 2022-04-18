@@ -550,3 +550,33 @@ a {
     margin-top: .8rem;
     margin-bottom: 7.6rem;
 }
+
+/*** Mensajes ***/
+
+.exito {
+    background-color: var(--verde);    
+    padding: 1rem;    
+    font-size: 1.3rem;    
+    margin: 1rem auto;
+    color: var(--verdeOscuro);   
+    text-align: center; 
+    text-transform: uppercase;
+    font-weight: bold;        
+    width: 27.5rem;
+}
+  
+.error {
+    background-color: var(--rosado);    
+    padding: 1rem;    
+    font-size: 1.3rem;    
+    margin: 1rem auto;
+    color: var(--rojo);   
+    text-align: center; 
+    text-transform: uppercase;
+    font-weight: bold;
+    width: 27.5rem;
+}
+
+.disabled {
+    opacity: 0.5;
+}

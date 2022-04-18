@@ -32,14 +32,14 @@
     
     <section class="login-div">
         <div class="login-formulario">
-            <form class="formulario contenedor">
+            <form id="formulario-login" class="formulario contenedor">
                 <h2>Iniciar Sesión</h2>
-                <div class="contenedor-login">
+                <div id="contenedor-login" class="contenedor-login">
                     <div class="campo-login">                        
-                        <input type="text" placeholder="Escriba su correo electrónico" required />
+                        <input type="text" placeholder="Escriba su correo electrónico" id="input-email" required />
                     </div>
                     <div class="campo-login">
-                        <input type="text" placeholder="Escriba su contraseña" required />
+                        <input type="password" placeholder="Escriba su contraseña" id="input-password" autocomplete="off" required />
                     </div>
                 </div>
                 <div class="contenedor-btn-login">
@@ -87,5 +87,6 @@
     </footer>
 
     <script src="js/app.js"></script>
+    <script src="js/login.js"></script>
 </body>
 </html>

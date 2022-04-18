@@ -129,4 +129,10 @@
     .contenedor-btn-agregar .btn-enviar {
         max-width: 55.9rem;
     }
+
+    /*** Mensajes ***/ 
+    .error,
+    .exito {
+        width: 42.3rem;
+    }
 }

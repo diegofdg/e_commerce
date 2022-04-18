@@ -11,6 +11,7 @@ function agregarEventListeners() {
     if(btnLogin) {
         btnLogin.addEventListener('click', login);
     }
+    
     if(btnHero) {
         btnHero.addEventListener('click', consolas);
     }
