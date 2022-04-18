@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alura Geek</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="./css/reset.css" rel="stylesheet">
+    <link href="./css/colores.css" rel="stylesheet">
+    <link href="./css/page.css" rel="stylesheet">
+    <link href="./css/header.css" rel="stylesheet">
+    <link href="./css/agregar-producto/agregar-producto.css" rel="stylesheet">
+    <link href="./css/footer.css" rel="stylesheet">
+</head>
+
+<body class="page">
+    <header class="header">
+        <div class="header__cabeza">
+            <h1 class="header__logo-img"><a href="index.html"><img src="./img/Logo.png" alt="Logo Alura Geek"></a></h1>
+            <div class="header__input header__input-fuera">
+                <input type="text" class="header__input-texto" placeholder="¿Qué estás buscando?">
+                <button class="header__input-boton"><img src="./img/Icone_lupa.png" alt="Icono Lupa"></button>
+            </div>
+        </div>
+        <a href="login.html" class="header__login">Login</a>
+        <button class="header__hamburguesa"><img src="./img/Icone_lupa.png" alt="Icono Lupa"></button>
+    </header>
+    
+    <main>
+        <section class="agregar">
+            <div class="agregar__titulo">
+                <h3>Agregar nuevo producto</h3>
+            </div>
+            <div class="agregar__box">
+                <form class="agregar__form">
+                    <div class="agregar__form__imagen">
+                        <div class="agregar__imagen-div" id="box__imagen"></div>
+                        <label for="input__imagen" class="input__image-label"> Elegir archivo</label>
+                        <input type="file" class="agregar__imagen" id="input__imagen">
+                    </div>
+                    <div class="agregar__form__nombre">
+                        <label for="agregar__nombre" class="agregar__form__nombre-label agrear_input__label">Nombre del producto</label>
+                        <input type="text" class="agregar__form__nombre-input agregar__input" id="agregar__nombre">
+                    </div>
+                    <div class="agregar__form__precio">
+                        <label for="agregar__precio" class="agregar__form__precio-label agrear_input__label">Precio del producto</label>
+                        <input type="text" class="agregar__form__precio-input agregar__input" id="agregar__precio">
+                    </div>
+                    <div class="agregar__form__descripcion">
+                        <label for="agregar__descripcion" class="agregar__form__descripcion-label agrear_input__label">Descripción</label>
+                        <textarea  class="agregar__descripcion agregar__input" id="agregar__descripcion"></textarea>
+                    </div>
+
+                    <div class="agregar__form__enviar">
+                        <button class="agregar__enviar">
+                                    Agregar producto
+                         </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <secction class="footer__empresa">
+            <div class="footer__seccion">
+                <img class="footer__empresa-logo" src="./img/Logo.png" alt="Logo Alura Geek">
+                <div class="footer__empresa__links">
+                    <a href="#">Quienes somos</a>
+                    <a href="#">Política de privacidad</a>
+                    <a href="#">Programa de fidelidad</a>
+                    <a href="#">Nuestra tienda</a>
+                    <a href="#">Quiero ser franquiciado</a>
+                    <a href="#">Anuncie aquí</a>
+                </div>
+            </div>
+            <div class="footer__contacto">
+                <h3 class="footer__contacto-titulo">Hable con nosotros</h3>
+                <form class="footer__form">
+                    <div class="form__nombre">
+                        <label class="form__nombre-label" for="nombre">Nombre</label>
+                        <input class="form__nombre-input input__padron" type="text" id="nombre"  required minlength="4" maxlength="50">
+                    </div>
+                    <div class="form__mensaje">
+                        <textarea class="input__padron" placeholder="Escribe tu mensaje"></textarea>
+                    </div>
+                    <button class="form__enviar">Enviar Mensaje</button>
+                </form>
+            </div>
+        </secction>
+        <secction class="footer__desarrollador">
+            <h3 class="footer__desarrollador-texto">Desarrollado por Julian Zocco</h3>
+            <h3 class="footer__desarrollador-año" >2022</h3>
+        </secction>
+    </footer>
+    <script src="./js/header-animaciones.js"></script>
+    <script src="./js/agregar-producto-mostrar-imagen.js"></script>
+    
+</body>
+</html>

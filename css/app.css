@@ -10,10 +10,11 @@
     --gris: #E5E5E5;
     --grisClaro: #F5F5F5;
     --grisOscuro: #A2A2A2;
+    --grisNegro: #6B6B6B;
     --azul: #2A7AE4;
     --verde: #cff4fc;
     --verdeOscuro: #008000;
-    --rosado: #f8d7da; 
+    --rosado: #F8D7DA;
     --rojo: #842029;
 }
 
@@ -122,7 +123,7 @@ a {
 
 /*** Hero ***/
 
-.hero {    
+.hero {
     background-image: url('../img/hero.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -432,6 +433,125 @@ a {
     font-size: 1.6rem;
     font-weight: 400;
     width: 10.9rem;
+    margin-top: .8rem;
+    margin-bottom: 7.6rem;
+}
+
+/*** Agregar nuevo producto ***/
+
+.agregar-div {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding-top: 1.6rem;
+    background-color: var(--grisClaro);
+}
+
+.agregar-formulario-titulo h2 {
+    text-align: center;
+    margin-bottom: 1.6rem;
+    font-size: 2.2rem;
+}
+
+.drop-zone-agregar {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+}
+
+.drop-zone {
+    border: 1px dashed var(--grisBlanco);
+    border-radius: 0;
+    width: 32.8rem;
+    height: 13.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.2rem;
+}
+
+.drop-zone img {
+    width: 1.86rem;
+}
+
+.drop-zone-hide {
+    display: none;
+}
+
+.drop-zone p {
+    color: var(--grisNegro);
+    font-size: 1.4rem;
+    font-weight: 400;
+    padding: 0 3.2rem;
+}
+
+.texto-tablet {
+    display: none;
+}
+
+.btn-buscar-agregar {
+    display: inline-block;
+    color: var(--azul);
+    border: solid 1px var(--azul);
+    padding: 1.2rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    background-color: var(--grisClaro);
+    width: 21.6rem;
+    height: 5.1rem;
+    cursor: pointer;
+}
+
+.btn-buscar-agregar.pc {
+    display: none;
+}
+
+.campo-agregar {
+    background-color: var(--blanco);
+    padding: 1rem;
+    margin: .8rem auto 1.6rem;
+    border-radius: .5rem;
+    width: 100%;
+    border-bottom: 1px solid var(--grisBlanco);
+}
+
+.campo-agregar:last-child {    
+    margin-bottom: .8rem;
+}
+
+.campo-agregar label {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--grisOscuro);
+    padding: .8rem 0;
+}
+
+.campo-agregar input {
+    font-size: 1.6rem;
+    font-weight: 400;
+    width: 100%;
+    color: var(--negro);
+}
+
+.campo-agregar textarea {
+    width: 100%;
+}
+
+.campo-agregar.mensaje {
+    height: 81px;
+    padding-top: 1.6rem;
+}
+
+.contenedor-btn-agregar {
+    display: flex;
+    justify-content: center;
+}
+
+.contenedor-btn-agregar .btn-enviar {
+    font-size: 1.6rem;
+    font-weight: 400;
+    width: 100%;
     margin-top: .8rem;
     margin-bottom: 7.6rem;
 }
