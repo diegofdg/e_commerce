@@ -112,11 +112,6 @@ a {
     cursor: pointer;
 }
 
-.btn-login a,
-.btn-login a:visited {
-    color: var(--azul);
-}
-
 .icono-buscador {
     width: 1.7rem;
 }

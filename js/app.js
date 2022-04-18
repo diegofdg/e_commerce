@@ -1,3 +1,5 @@
+const btnLogin = document.getElementById('btn-login');
+
 iniciarApp();
 
 function iniciarApp() {
@@ -5,5 +7,11 @@ function iniciarApp() {
 };
 
 function agregarEventListeners() {
-    console.log('Aplicación iniciada');
+    if(btnLogin) {
+        btnLogin.addEventListener('click', login);
+    }
+}
+
+function login () {
+    window.location.replace("login.html");
 }
