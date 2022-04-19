@@ -98,7 +98,7 @@
     <section id="consolas">
         <header class="productos-header contenedor">
             <h2>Consolas</h2>
-            <a href="#">Ver todo <img src="img/icono_flecha.svg" alt="icono flecha"></a>
+            <a href="./producto.html">Ver todo <img src="img/icono_flecha.svg" alt="icono flecha"></a>
         </header>
         <div class="productos-div contenedor">
             <div class="productos-card">
@@ -155,7 +155,7 @@
     <section>
         <header class="productos-header contenedor">
             <h2>Diversos</h2>
-            <a href="#">Ver todo <img src="img/icono_flecha.svg" alt="icono flecha"></a>
+            <a href="./producto.html">Ver todo <img src="img/icono_flecha.svg" alt="icono flecha"></a>
         </header>
         <div class="productos-div contenedor">
             <div class="productos-card">
@@ -224,19 +224,29 @@
             </nav>
         </div>
         <div class="contacto-formulario">
-            <form class="formulario contenedor">
+            <form id="formulario-contacto" class="formulario contenedor">
                 <h2>Hable con nosotros</h2>
-                <div class="contenedor-campos">
+                <div id="contenedor-campos" class="contenedor-campos">
                     <div class="campo">
                         <label>Nombre</label>
-                        <input type="text" placeholder="Tu Nombre" required />
+                        <input type="text" placeholder="Tu Nombre" id="input-contacto-nombre" required />
                     </div>
                     <div class="campo mensaje">
-                        <textarea class="text-area" placeholder="Escribe tu mensaje" required></textarea>
+                        <textarea class="text-area" placeholder="Escribe tu mensaje" id="input-contacto-mensaje" required></textarea>
+                    </div>
+                </div>
+                <div  id="spinner">
+                    <div class="sk-chase">
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
                     </div>
                 </div>
                 <div>
-                    <input type="submit" class="btn-enviar" value="Enviar mensaje">
+                    <input type="submit" class="btn-enviar" id="btn-contacto-enviar" value="Enviar mensaje">
                 </div>
             </form>
         </div>

@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/tablet.css">
     <link rel="stylesheet" href="css/desktop.css">
-    <link rel="stylesheet" href="css/login/login.css">
+    <link rel="stylesheet" href="css/login/app.css">
     <link rel="stylesheet" href="css/login/tablet.css">
     <link rel="stylesheet" href="css/login/desktop.css">
 </head>
@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="contenedor-btn-login">
-                    <input type="submit" class="btn-enviar" value="Entrar">
+                    <input id="btn-enviar-login" type="submit" class="btn-enviar" value="Entrar">
                 </div>
             </form>
         </div>
@@ -67,19 +67,19 @@
             </nav>
         </div>
         <div class="contacto-formulario">
-            <form class="formulario contenedor">
+            <form id="formulario-contacto" class="formulario contenedor">
                 <h2>Hable con nosotros</h2>
                 <div class="contenedor-campos">
                     <div class="campo">
                         <label>Nombre</label>
-                        <input type="text" placeholder="Tu Nombre" required />
+                        <input type="text" placeholder="Tu Nombre" id="input-contacto-nombre" required />
                     </div>
                     <div class="campo mensaje">
-                        <textarea class="text-area" placeholder="Escribe tu mensaje" required></textarea>
+                        <textarea class="text-area" placeholder="Escribe tu mensaje" id="input-contacto-mensaje" required></textarea>
                     </div>
                 </div>
                 <div>
-                    <input type="submit" class="btn-enviar" value="Enviar mensaje">
+                    <input type="submit" class="btn-enviar" id="btn-contacto-enviar" value="Enviar mensaje">
                 </div>
             </form>
         </div>
