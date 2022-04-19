@@ -72,20 +72,6 @@
         width: 50%;
     }
 
-    /*** Login ***/
-
-    .login-formulario h2 {
-        font-size: 1.8rem;
-    }
-
-    .campo-login {
-        width: 42.3rem;
-    }
-
-    .contenedor-btn-login .btn-enviar {
-        width: 42.3rem;
-    }
-
     /*** Agregar nuevo producto ***/
 
     .agregar-formulario-titulo {

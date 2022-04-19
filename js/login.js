@@ -11,10 +11,8 @@ iniciarApp();
 
 function iniciarApp() {
     agregarEventListeners();
-    if(btnEnviar) {
-        btnEnviar.disabled = true;
-        btnEnviar.classList.add('disabled');
-    }
+    btnEnviar.disabled = true;
+    btnEnviar.classList.add('disabled');
 };
 
 function agregarEventListeners() {
@@ -26,7 +24,7 @@ function agregarEventListeners() {
 function validarLogin(e) {
     e.preventDefault();
     
-    switch(e.target.id){
+    switch(e.target.id) {
         case 'input-email':
             const email = inputEmail.value;
             if(email === '') {
@@ -34,7 +32,7 @@ function validarLogin(e) {
                 return;
             }
 
-            if(!expresionRegular.test(email)){
+            if(!expresionRegular.test(email)) {
                 mostrarMensaje('El email no es válido', 'error', formularioLogin.parentElement.nextElementSibling);
                 return;
             }
@@ -61,7 +59,7 @@ function validarLogin(e) {
 
 function submitLogin(e) {
     e.preventDefault();
-        
+
     if(inputEmail.value == 'correo@correo.com') {
         if(inputPassword.value == '123456') {
             window.location.replace("agregar-producto.html");
@@ -77,7 +75,7 @@ function mostrarMensaje(mensaje, tipo, origen) {
         mostrarMensaje = document.querySelector('.error');
     } else if (tipo == 'exito'){
         mostrarMensaje = document.querySelector('.exito');
-    }    
+    }
     
     if(!mostrarMensaje) {
         const divMensaje = document.createElement('div');
@@ -87,7 +85,7 @@ function mostrarMensaje(mensaje, tipo, origen) {
         
         setTimeout(()=> {
             divMensaje.remove();
-            if (tipo == 'exito'){
+            if (tipo == 'exito') {
                 formularioLogin.reset();
                 btnEnviar.disabled = true;
                 btnEnviar.classList.add('disabled');

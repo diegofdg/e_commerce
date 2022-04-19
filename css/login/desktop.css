@@ -1,0 +1,13 @@
+@media (min-width: 1024px) {
+    .login-formulario h2 {
+        font-size: 1.8rem;
+    }
+
+    .campo-login {
+        width: 42.3rem;
+    }
+
+    .contenedor-btn-login .btn-enviar {
+        width: 42.3rem;
+    }
+}
