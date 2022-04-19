@@ -107,33 +107,4 @@
     .footer {
         font-size: 1.6rem;
     }
-    
-    /*** Agregar nuevo producto ***/
-
-    .drop-zone {
-        width: 25.4rem;
-        height: 15.2rem;
-    }
-
-    .drop-zone-agregar {
-        display: flex;
-    }
-    
-    .drop-zone-hide {
-        display: block;
-    }
-
-    .drop-zone img {
-        content: url("../img/icono_imagen.svg");
-        width: 3.2rem;
-    }
-
-    .texto-movil {
-        display: none;
-    }
-
-    .texto-tablet {
-        display: block;
-        text-align: center;
-    }
 }

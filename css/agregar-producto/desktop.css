@@ -1,0 +1,44 @@
+@media (min-width: 1024px) {
+
+    .agregar-formulario-titulo {
+        display: flex;
+        flex-direction: column;
+        width: 55.9rem;
+        align-items: flex-start;
+    }
+    
+    .agregar-formulario-titulo h2 {
+        text-align: left;
+        font-size: 3.2rem;
+    }
+    
+    .drop-zone {
+        width: 30.1rem;
+        height: 15.2rem;
+    }
+    
+    .drop-zone-agregar {
+        justify-content: center;
+    }
+    
+    .btn-buscar-agregar {
+        width: 22.9rem;
+        height: 5.1rem;
+    }
+    
+    .btn-buscar-agregar.tablet {
+        display: none;
+    }
+    
+    .btn-buscar-agregar.pc {
+        display: block;
+    }
+    
+    .campo-agregar {
+        max-width: 55.9rem;
+    }
+    
+    .contenedor-btn-agregar .btn-enviar {
+        max-width: 55.9rem;
+    }
+}
