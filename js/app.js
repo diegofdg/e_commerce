@@ -4,8 +4,13 @@ const inputContactoMensaje = document.getElementById('input-contacto-mensaje');
 const formularioContacto = document.getElementById('formulario-contacto');
 const contenedorCampos = document.getElementById('contenedor-campos');
 const btnContactoEnviar = document.getElementById('btn-contacto-enviar');
+const campoContactoNombre = document.getElementById('campo-contacto-nombre');
+const campoContactoMensaje = document.getElementById('campo-contacto-mensaje');
 let errorNombre = true;
 let errorMensaje = true;
+
+console.log(campoContactoNombre);
+
 
 iniciarApp();
 
@@ -30,16 +35,16 @@ function validarMensaje(e) {
     e.preventDefault();
     
     switch(e.target.id) {
-        case 'input-contacto-nombre':
+        case 'input-contacto-nombre':            
             const nombre = inputContactoNombre.value;
             if(nombre === '') {
                 errorNombre = true;
-                mostrarMensaje('El nombre no puede estar vacío', 'error', formularioContacto.parentElement.nextElementSibling);
+                mostrarMensajeContacto('El nombre no puede estar vacío', 'error', campoContactoNombre);
                 return;
             }
 
             if(nombre.length > 40) {
-                mostrarMensaje('El nombre no puede contener más de 40 caracteres', 'error', formularioContacto.parentElement.nextElementSibling);
+                mostrarMensajeContacto('El nombre no puede contener más de 40 caracteres', 'error', campoContactoNombre);
                 errorNombre = true;
                 return;
             }
@@ -52,12 +57,12 @@ function validarMensaje(e) {
             const mensaje = inputContactoMensaje.value;
             if(mensaje === '') {
                 errorMensaje = true;
-                mostrarMensaje('El mensaje no puede estar vacío', 'error', formularioContacto.parentElement.nextElementSibling);
+                mostrarMensajeContacto('El mensaje no puede estar vacío', 'error', campoContactoMensaje);
                 return;
             }
 
             if(mensaje.length > 60) {
-                mostrarMensaje('El mensaje no puede contener más de 60 caracteres', 'error', formularioContacto.parentElement.nextElementSibling);
+                mostrarMensajeContacto('El mensaje no puede contener más de 60 caracteres', 'error', campoContactoMensaje);
                 errorMensaje = true;
                 return;
             }
@@ -84,11 +89,13 @@ function enviarMensaje(e) {
 
     setTimeout(()=>{
         spinner.style.display = 'none';
-        mostrarMensaje('El email se ha enviado exitosamente', 'exito', btnContactoEnviar.parentElement.nextElementSibling);
+        mostrarMensajeContacto('El email se ha enviado exitosamente', 'exito', btnContactoEnviar.parentElement.nextElementSibling);
     }, 3000);
 }
 
-function mostrarMensaje(mensaje, tipo, origen) {
+function mostrarMensajeContacto(mensaje, tipo, origen) {
+    console.log(origen);
+    
     let mostrarMensaje;
     if(tipo == 'error') {
         mostrarMensaje = document.querySelector('.error');
@@ -101,7 +108,8 @@ function mostrarMensaje(mensaje, tipo, origen) {
         divMensaje.classList.add(tipo, 'mensaje-contacto');
         divMensaje.textContent = mensaje;
         
-        contenedorCampos.insertBefore(divMensaje, origen);
+        //contenedorCampos.insertBefore(divMensaje, origen);
+        origen?.parentElement.insertBefore(divMensaje, origen.nextElementSibling);
         
         setTimeout(()=> {
             divMensaje.remove();

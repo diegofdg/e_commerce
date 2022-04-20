@@ -19,7 +19,7 @@ function iniciarApp() {
 function agregarEventListeners() {
     inputEmail.addEventListener('blur', validarLogin);
     inputPassword.addEventListener('blur', validarLogin);
-    formularioLogin.addEventListener('submit', submitLogin);
+    btnEnviarLogin.addEventListener('click', submitLogin);
 }
 
 function validarLogin(e) {
