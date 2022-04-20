@@ -52,7 +52,7 @@ function validarMensaje(e) {
             const mensaje = inputContactoMensaje.value;
             if(mensaje === '') {
                 errorMensaje = true;
-                mostrarMensaje('El mensaje no puede estar vacío', 'error', formularioLogin.parentElement.nextElementSibling);
+                mostrarMensaje('El mensaje no puede estar vacío', 'error', formularioContacto.parentElement.nextElementSibling);
                 return;
             }
 

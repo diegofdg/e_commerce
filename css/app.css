@@ -371,11 +371,6 @@ a {
     width: 27.5rem;
 }
 
-.exito.mensaje-contacto,
-.error.mensaje-contacto {
-    width: 100%;
-}
-  
 .error {
     background-color: var(--rosado);    
     padding: 1rem;    
@@ -386,6 +381,11 @@ a {
     text-transform: uppercase;
     font-weight: bold;
     width: 27.5rem;
+}
+
+.exito.mensaje-contacto,
+.error.mensaje-contacto {
+    width: 100%;
 }
 
 .disabled {
@@ -451,7 +451,8 @@ a {
 @keyframes sk-chase-dot-before {
     50% {
       transform: scale(0.4); 
-    } 100%, 0% {
+    }    
+    100%, 0% {
       transform: scale(1.0); 
-    } 
+    }
 }

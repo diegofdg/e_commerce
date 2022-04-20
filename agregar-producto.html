@@ -35,12 +35,12 @@
 
     <section class="agregar-div">
         <div class="agregar-formulario">
-            <form class="formulario contenedor">
+            <form id="formulario-agregar" class="formulario contenedor">
                 <div class="agregar-formulario-titulo contenedor">
                     <h2>Agregar nuevo producto</h2>
                 </div>
                 <div class="contenedor-agregar">
-                    <div class="drop-zone-agregar">
+                    <div id="drop-zone-agregar" class="drop-zone-agregar">
                         <div class="drop-zone">
                             <img src="img/icono_mas.svg" alt="icono-mas">
                             <p class="texto-movil">Agregar una imágen para el producto</p>
@@ -50,24 +50,36 @@
                             <p>O</p>
                         </div>
                         <div class="drop-zone-hide">
-                            <button type="button" class="btn-buscar-agregar tablet">Busque en su dispositivo</button>
-                            <button type="button" class="btn-buscar-agregar pc">Busque en su computador</button>
+                            <button type="button" id="btn-buscar-archivo" class="btn-buscar-agregar"></button>
+                            <input type='file' accept="image/png,image/jpeg" id="input-buscar-archivo" class="input-buscar-archivo" style="display:none">
                         </div>
                     </div>
-                    <div class="campo-agregar">
-                        <label>Nombre</label>
-                        <input type="text" placeholder="Nombre del Producto" required />
+                    <div id="contenedor-campos-agregar">
+                        <div id="campo-agregar-nombre" class="campo-agregar">
+                            <label>Nombre</label>
+                            <input id="input-agregar-nombre" type="text" placeholder="Nombre del Producto" required />
+                        </div>
+                        <div id="campo-agregar-precio" class="campo-agregar">
+                            <label>Precio del Producto</label>
+                            <input id="input-agregar-precio" type="number" placeholder="Precio del Producto" required />
+                        </div>
+                        <div id="campo-agregar-mensaje" class="campo-agregar mensaje">
+                            <textarea id="input-agregar-mensaje" class="text-area" placeholder="Descripción del Producto" required></textarea>
+                        </div>
                     </div>
-                    <div class="campo-agregar">
-                        <label>Precio del Producto</label>
-                        <input type="text" placeholder="Precio del Producto" required />
-                    </div>
-                    <div class="campo-agregar mensaje">
-                        <textarea class="text-area" placeholder="Descripción del Producto" required></textarea>
+                </div>
+                <div id="spinner-agregar">
+                    <div class="sk-chase">
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
                     </div>
                 </div>
                 <div class="contenedor-btn-agregar">
-                    <input type="submit" class="btn-enviar" value="Agregar Producto">
+                    <input id="btn-agregar-enviar" type="submit" class="btn-enviar" value="Agregar Producto">
                 </div>
             </form>
         </div>
@@ -99,6 +111,16 @@
                         <textarea class="text-area" placeholder="Escribe tu mensaje" id="input-contacto-mensaje" required></textarea>
                     </div>
                 </div>
+                <div id="spinner">
+                    <div class="sk-chase">
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                    </div>
+                </div>
                 <div>
                     <input type="submit" class="btn-enviar" id="btn-contacto-enviar" value="Enviar mensaje">
                 </div>
@@ -111,5 +133,6 @@
     </footer>
 
     <script src="js/app.js"></script>
+    <script src="js/agregar-producto.js"></script>
 </body>
 </html>

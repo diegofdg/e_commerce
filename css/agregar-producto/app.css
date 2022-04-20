@@ -21,7 +21,7 @@
 .drop-zone {
     border: 1px dashed var(--grisBlanco);
     border-radius: 0;
-    width: 32.8rem;
+    width: 100%;
     height: 13.4rem;
     display: flex;
     flex-direction: column;
@@ -62,8 +62,21 @@
     cursor: pointer;
 }
 
-.btn-buscar-agregar.pc {
-    display: none;
+#btn-buscar-archivo:before {
+    content: "Busque en su computador";
+    
+}
+  
+@media (max-width: 1024px) and (min-width:768px) {
+    #btn-buscar-archivo:before {
+        content: "Busque en su dispositivo";
+  }
+}
+
+@media (max-width:767px){
+    #texto:before {
+        content: "";
+    }
 }
 
 .campo-agregar {
@@ -113,4 +126,10 @@
     width: 100%;
     margin-top: .8rem;
     margin-bottom: 7.6rem;
+}
+
+#spinner-agregar {
+    display: none;
+    justify-content: center;
+    padding: 3rem 0;
 }
