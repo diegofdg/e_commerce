@@ -9,6 +9,10 @@ const campoAgregarNombre = document.getElementById('campo-agregar-nombre');
 const campoAgregarPrecio = document.getElementById('campo-agregar-precio');
 const campoAgregarMensaje = document.getElementById('campo-agregar-mensaje');
 const contenedorCamposAgregar = document.getElementById('contenedor-campos-agregar');
+const iconoAgregarImagen = document.getElementById('icono-agregar-imagen');
+const dropZone = document.getElementById('drop-zone');
+const dropZoneDiv = document.getElementById('drop-zone-div');
+let archivo;
 
 let errorAgregarNombre = true;
 let errorAgregarMensaje = true;
@@ -24,6 +28,8 @@ function iniciarApp() {
 };
 
 function agregarEventListeners() {
+    dropZone.addEventListener('dragover', permitirDrop, false);    
+    dropZone.addEventListener('drop', drop, false);
     btnBuscarArchivo.addEventListener('click', buscarArchivo);
     inputBuscarArchivo.addEventListener('change', verificarArchivo);
     inputAgregarNombre.addEventListener('blur', validarProducto);
@@ -32,10 +38,42 @@ function agregarEventListeners() {
     formularioAgregar.addEventListener('submit', agregarProducto);
 }
 
-function verificarArchivo() {
+function permitirDrop(e) {
+    e.preventDefault();
+}
+
+function drop(e) {
+    e.preventDefault();    
+    archivo = e.dataTransfer.files[0];
+    leerImagen();
+}
+
+function leerImagen() {
+    let tipoArchivo = archivo.type;
+    let regexSoloImagenes = ["image/jpeg", "image/jpg", "image/png", "image/svg+xml"];
+
+    if (regexSoloImagenes.includes(tipoArchivo)) {
+        let fileReader = new FileReader();
+        fileReader.readAsDataURL(archivo);
+        fileReader.onload = () => {
+            let fileURL = fileReader.result;
+            dropZone.style.backgroundImage="url('" + fileURL + "')";
+            dropZone.style.backgroundSize= "contain";
+            dropZoneDiv.style.display="none";
+        }
+    } else {
+        mostrarMensaje('Debe seleccionar una imágen válida', 'error', dropZone.parentElement);
+    }
+}
+
+function verificarArchivo(e) {
+    e.preventDefault();
+
     if(document.getElementsByClassName('input-buscar-archivo')[0].files[0] === undefined) {
         errorAgregarImagen = true;
     } else {
+        archivo = document.getElementsByClassName('input-buscar-archivo')[0].files[0];
+        leerImagen();
         errorAgregarImagen = false;
     }
 }
@@ -116,7 +154,6 @@ function agregarProducto(e) {
     setTimeout(()=>{
         spinner.style.display = 'none';
         mostrarMensaje('El producto se ha agregado exitosamente', 'exito', campoAgregarMensaje);        
-        
     }, 3000);
 }
 
@@ -139,6 +176,8 @@ function mostrarMensaje(mensaje, tipo, origen) {
             divMensaje.remove();
             if (tipo == 'exito') {
                 formularioAgregar.reset();
+                dropZone.style.backgroundImage="none";
+                dropZoneDiv.style.display="flex";
                 btnAgregarEnviar.disabled = true;
                 btnAgregarEnviar.classList.add('disabled');
             }

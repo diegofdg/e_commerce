@@ -9,9 +9,6 @@ const campoContactoMensaje = document.getElementById('campo-contacto-mensaje');
 let errorNombre = true;
 let errorMensaje = true;
 
-console.log(campoContactoNombre);
-
-
 iniciarApp();
 
 function iniciarApp() {
