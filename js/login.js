@@ -71,7 +71,7 @@ function submitLogin(e) {
 
     if(inputEmail.value == 'correo@correo.com') {
         if(inputPassword.value == '123456') {
-            window.location.replace("agregar-producto.html");
+            window.location.replace("productos.html");
         }
     } else {
         mostrarMensaje('Email o Password incorrectos', 'error', formularioLogin.parentElement.nextElementSibling);

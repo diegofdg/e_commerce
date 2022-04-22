@@ -1,0 +1,35 @@
+.productos-header.admin {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.productos-header h2 {
+    margin-top: 3.2rem;
+    margin-bottom: 1.6rem;
+}
+
+.productos-section {
+    background-color: var(--gris);
+}
+
+.productos-div .productos-card:nth-child(-n+18) {
+    display: block;
+}
+
+.btn-agregar {
+    display: inline-block;
+    background-color: var(--azul);
+    color: var(--blanco);
+    border: solid 1px var(--azul);
+    padding: 1.2rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    width: 15.0rem;
+}
+
+.productos-card .id-producto {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+}

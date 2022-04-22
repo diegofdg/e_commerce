@@ -1,0 +1,11 @@
+@media (min-width: 768px) {
+    .productos-header.admin {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .productos-header.admin h2 {
+        margin-top: 1.6rem;
+    }
+}
