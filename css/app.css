@@ -180,11 +180,17 @@ a {
 
 /*** Productos ***/
 
+.star-wars,
+.consolas,
+.diversos {
+    background-color: var(--gris);
+}
+
 .productos-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 1.4rem;
+    padding-top: 1.4rem;
 }
 
 .productos-header h2 {
