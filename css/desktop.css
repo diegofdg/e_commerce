@@ -41,7 +41,7 @@
         display: block;
     }
 
-    .productos-card img {
+    .productos-card .imagen-producto {
         max-width: 100%;
         max-height: 100%;
     }

@@ -230,16 +230,35 @@ a {
 }
 
 .productos-card {
+    position: relative;
     margin-top: 1rem;
     margin-bottom: 1rem;
     display: none;
+    width: 100%;
+    max-width: 15.6rem;    
 }
 
-.productos-card img {
+.productos-card .imagen-producto {
     width: 100%;
     max-width: 15.6rem;
     height: 100%;
     max-height: 17.4rem;
+}
+
+.icono-borrar {
+    width: 1.4rem;    
+    height: 1.8rem;    
+    position: absolute;
+    top: 6%;
+    right: 35%;
+}
+
+.icono-editar {
+    width: 1.8rem;    
+    height: 1.8rem;    
+    position: absolute;
+    top: 6%;
+    right: 10%;
 }
 
 .productos-card h4 {

@@ -81,7 +81,7 @@
         grid-template-columns: repeat(4, 1fr);
     }
 
-    .productos-card img {
+    .productos-card .imagen-producto {
         max-width: 16.4rem;
     }
 
