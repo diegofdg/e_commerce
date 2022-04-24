@@ -6,4 +6,19 @@
         margin: 0 auto;
         gap: 1.6rem;
     }
+
+    .contenedor-detalle-producto {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .hero-producto-div .contenedor h4 {
+        margin-top: 0;
+    }
+
+    .descripcion {
+        margin-bottom: 0;
+    }
 }

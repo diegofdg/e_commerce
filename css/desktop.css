@@ -48,6 +48,10 @@
 
     /*** Contacto ***/
 
+    .contacto {
+        padding: 6.44rem;
+    }
+
     .contacto-logo-nav {
         flex-direction: row;
         justify-content: flex-start;

@@ -115,6 +115,10 @@
         flex-grow: 4;
     }
 
+    #formulario-contacto {
+        margin: 0;
+    }
+
     .campo {
         margin-bottom: 1.4rem;
     }
