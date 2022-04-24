@@ -51,7 +51,7 @@
     .contacto-logo-nav {
         flex-direction: row;
         justify-content: flex-start;
-        gap: 11.2rem;
+        gap: 8rem;
     }
 
     .contacto-nav li {
