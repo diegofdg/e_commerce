@@ -1,13 +1,25 @@
 @media (min-width: 1024px) {
+    .login-div {
+        padding-top: 9.1rem;
+    }    
+
     .login-formulario h2 {
         font-size: 1.8rem;
     }
 
     .campo-login {
         width: 42.3rem;
+        height: 6.3rem;
     }
 
     .contenedor-btn-login .btn-enviar {
+        font-size: 1.8rem;
+        font-weight: 600;
         width: 42.3rem;
+        height: 6.2rem;
+    }
+
+    .campo-login input {
+        padding-top: 1rem;
     }
 }

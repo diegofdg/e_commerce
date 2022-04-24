@@ -21,7 +21,7 @@ function agregarEventListeners() {
     btnLogin.addEventListener('click', login);
     inputContactoNombre.addEventListener('blur', validarMensaje);
     inputContactoMensaje.addEventListener('blur', validarMensaje);
-    formularioContacto.addEventListener('submit', enviarMensaje)
+    btnContactoEnviar.addEventListener('click', enviarMensaje)
 }
 
 function login() {
@@ -86,13 +86,11 @@ function enviarMensaje(e) {
 
     setTimeout(()=>{
         spinner.style.display = 'none';
-        mostrarMensajeContacto('El email se ha enviado exitosamente', 'exito', btnContactoEnviar.parentElement.nextElementSibling);
+        mostrarMensajeContacto('El email se ha enviado exitosamente', 'exito', btnContactoEnviar.parentElement);
     }, 3000);
 }
 
 function mostrarMensajeContacto(mensaje, tipo, origen) {
-    console.log(origen);
-    
     let mostrarMensaje;
     if(tipo == 'error') {
         mostrarMensaje = document.querySelector('.error');
@@ -104,9 +102,7 @@ function mostrarMensajeContacto(mensaje, tipo, origen) {
         const divMensaje = document.createElement('div');
         divMensaje.classList.add(tipo, 'mensaje-contacto');
         divMensaje.textContent = mensaje;
-        
-        //contenedorCampos.insertBefore(divMensaje, origen);
-        origen?.parentElement.insertBefore(divMensaje, origen.nextElementSibling);
+        origen?.parentElement.insertBefore(divMensaje, origen);
         
         setTimeout(()=> {
             divMensaje.remove();

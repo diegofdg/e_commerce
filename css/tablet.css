@@ -102,7 +102,6 @@
         flex-grow: 1;
         align-items: flex-start;
         margin-left: 5%;
-        padding: 2rem 0 0;
     }
 
     .contacto-nav {
@@ -113,7 +112,7 @@
     }
 
     .contacto-formulario {
-        flex-grow: 1.5;
+        flex-grow: 4;
     }
 
     .campo {

@@ -21,6 +21,7 @@
     margin: .8rem auto 1.6rem;
     border-radius: .5rem;
     width: 27.5rem;
+    height: 4.1rem;
 }
 
 .campo-login:last-child {
@@ -33,6 +34,7 @@
     font-weight: 400;
     width: 100%;
     color: var(--negro);
+    padding-top: .8rem;
 }
 
 .contenedor-btn-login {
