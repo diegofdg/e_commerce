@@ -52,6 +52,8 @@ function mostrarProductos(listaProductos, criterio) {
 
                 const enlaceProducto = document.createElement('A');
                 enlaceProducto.setAttribute('data-id', `${id}`);
+                enlaceProducto.setAttribute('href', 'producto.html');
+
                 enlaceProducto.textContent = `Ver Producto`;
                 divProducto.appendChild(enlaceProducto);
 
