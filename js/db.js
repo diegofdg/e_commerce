@@ -88,7 +88,7 @@ const listaProductos = [
 		imagen: 'consolas_img_05.jpg'
 	},
 	{
-		id: 12345,
+		id: 12456,
 		categoria: 'Consolas',
 		nombre: 'Game Boy Color',
 		precio: 60,
@@ -96,7 +96,7 @@ const listaProductos = [
 		imagen: 'consolas_img_06.jpg'
 	},
 	{
-		id: 13456,
+		id: 13567,
 		categoria: 'Diversos',
 		nombre: 'Camisa Atari',
 		precio: 60,
@@ -104,7 +104,7 @@ const listaProductos = [
 		imagen: 'diversos_img_01.jpg'
 	},
 	{
-		id: 14567,
+		id: 14678,
 		categoria: 'Diversos',
 		nombre: 'Camisa SNES',
 		precio: 60,
@@ -112,7 +112,7 @@ const listaProductos = [
 		imagen: 'diversos_img_02.jpg'
 	},
 	{
-		id: 15678,
+		id: 15789,
 		categoria: 'Diversos',
 		nombre: 'Control y Consola XYZ',
 		precio: 60,
@@ -120,7 +120,7 @@ const listaProductos = [
 		imagen: 'diversos_img_03.jpg'
 	},
 	{
-		id: 16789,
+		id: 16890,
 		categoria: 'Diversos',
 		nombre: 'Control y Consola XYZ',
 		precio: 60,
@@ -128,7 +128,7 @@ const listaProductos = [
 		imagen: 'diversos_img_04.jpg'
 	},
 	{
-		id: 17890,
+		id: 17901,
 		categoria: 'Diversos',
 		nombre: 'Control y Consola XYZ',
 		precio: 60,
@@ -136,7 +136,7 @@ const listaProductos = [
 		imagen: 'diversos_img_05.jpg'
 	},
 	{
-		id: 18901,
+		id: 18012,
 		categoria: 'Diversos',
 		nombre: 'Producto XYZ',
 		precio: 60,

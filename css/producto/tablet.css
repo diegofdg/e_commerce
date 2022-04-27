@@ -7,6 +7,11 @@
         gap: 1.6rem;
     }
 
+    .hero-producto-div img {
+        width: 25.4rem;
+        height: 15.7rem;
+    }
+
     .contenedor-detalle-producto {
         display: flex;
         flex-direction: column;
