@@ -1,4 +1,5 @@
 const btnHero = document.getElementById('btn-hero');
+const inputBuscador = document.getElementById('input-buscador');
 const productosDivStarwars = document.getElementById('productos-div-starwars');
 const productosDivConsolas = document.getElementById('productos-div-consolas');
 const productosDivDiversos = document.getElementById('productos-div-diversos');
@@ -16,6 +17,9 @@ function iniciarApp() {
 
 function agregarEventListeners() {
     btnHero.addEventListener('click', consolas);
+    inputBuscador.addEventListener('change', (e) => {
+        filtrarProductos(e.target.value);        
+    });
 }
 
 function consolas() {
@@ -25,10 +29,17 @@ function consolas() {
         });
 }
 
-function mostrarProductos(listaProductos, criterio) {
+function mostrarProductos(listaProductos, criterio) {    
     switch(criterio) {
         case 'Star Wars':
             const listaFiltradaStarwars = listaProductos.filter(filtrarStarwars);
+            
+            if(listaFiltradaStarwars.length === 0) {
+                productosDivStarwars.previousElementSibling.style.display='none';
+                return;
+            }
+
+            productosDivStarwars.previousElementSibling.style.display = 'flex';            
     
             listaFiltradaStarwars.forEach(producto => {
                 const { id, nombre, precio, imagen } = producto;
@@ -66,6 +77,13 @@ function mostrarProductos(listaProductos, criterio) {
 
         case 'Consolas':
             const listaFiltradaConsolas = listaProductos.filter(filtrarConsolas);
+
+            if(listaFiltradaConsolas.length === 0) {
+                productosDivConsolas.previousElementSibling.style.display='none';
+                return;
+            }
+
+            productosDivConsolas.previousElementSibling.style.display = 'flex';
     
             listaFiltradaConsolas.forEach(producto => {
                 const { id, nombre, precio, imagen } = producto;
@@ -101,6 +119,13 @@ function mostrarProductos(listaProductos, criterio) {
 
         case 'Diversos':
             const listaFiltradaDiversos = listaProductos.filter(filtrarDiversos);
+
+            if(listaFiltradaDiversos.length === 0) {
+                productosDivDiversos.previousElementSibling.style.display='none';
+                return;
+            }
+
+            productosDivDiversos.previousElementSibling.style.display = 'flex';
     
             listaFiltradaDiversos.forEach(producto => {
                 const { id, nombre, precio, imagen } = producto;
@@ -154,5 +179,34 @@ function filtrarConsolas(producto) {
 function filtrarDiversos(producto) {
     if(producto.categoria === 'Diversos') {
         return producto;
+    }
+}
+
+function filtrarProductos(criterio) {
+    let criterioBusqueda = criterio.toLowerCase();
+    const listaFiltradaTodas = listaProductos.filter((producto)=> {
+        let nombre = producto.nombre.toLowerCase();
+        
+        if(nombre.indexOf(criterioBusqueda) !== -1) {
+            return producto;
+        }
+    });
+    
+    limpiarHtml();
+
+    mostrarProductos(listaFiltradaTodas, 'Star Wars');
+    mostrarProductos(listaFiltradaTodas, 'Consolas');
+    mostrarProductos(listaFiltradaTodas, 'Diversos');
+}
+
+function limpiarHtml() {
+    while(productosDivStarwars.firstChild) {
+        productosDivStarwars.removeChild(productosDivStarwars.firstChild);
+    }
+    while(productosDivConsolas.firstChild) {
+        productosDivConsolas.removeChild(productosDivConsolas.firstChild);
+    }
+    while(productosDivDiversos.firstChild) {
+        productosDivDiversos.removeChild(productosDivDiversos.firstChild);
     }
 }
