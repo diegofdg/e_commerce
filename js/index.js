@@ -1,8 +1,12 @@
 const btnHero = document.getElementById('btn-hero');
 const inputBuscador = document.getElementById('input-buscador');
+const iconoBuscador = document.getElementById('icono-buscador');
+const loginDiv = document.getElementById('login-div');
+const logoDiv = document.getElementById('logo-div');
 const productosDivStarwars = document.getElementById('productos-div-starwars');
 const productosDivConsolas = document.getElementById('productos-div-consolas');
 const productosDivDiversos = document.getElementById('productos-div-diversos');
+let mostrarHeader = true;
 
 document.addEventListener('DOMContentLoaded', () => {
     iniciarApp();
@@ -17,8 +21,30 @@ function iniciarApp() {
 
 function agregarEventListeners() {
     btnHero.addEventListener('click', consolas);
-    inputBuscador.addEventListener('change', (e) => {
-        filtrarProductos(e.target.value);        
+
+    inputBuscador.addEventListener('keyup', (e) => {
+        if(e.target.value.length > 3) {
+            filtrarProductos(e.target.value);
+        }
+    });
+
+    iconoBuscador.addEventListener('click', () => {        
+        let mediaqueryList = window.matchMedia("(max-width: 767px)");
+        if(mediaqueryList.matches) {
+            mostrarHeader = !mostrarHeader;
+            loginDiv.style.display = 'none';
+            logoDiv.style.display = 'none';
+            inputBuscador.style.display = 'block';
+
+            if(mostrarHeader) {
+                loginDiv.style.display = 'flex';
+                logoDiv.style.display = 'flex';
+                inputBuscador.style.display = 'none';
+            }
+            
+        } else {
+            inputBuscador.style.display = 'block';
+        }
     });
 }
 
