@@ -1,3 +1,4 @@
+import { obtenerProductos } from './API.js';
 const btnHero = document.getElementById('btn-hero');
 const inputBuscador = document.getElementById('input-buscador');
 const iconoBuscador = document.getElementById('icono-buscador');
@@ -7,6 +8,7 @@ const productosDivStarwars = document.getElementById('productos-div-starwars');
 const productosDivConsolas = document.getElementById('productos-div-consolas');
 const productosDivDiversos = document.getElementById('productos-div-diversos');
 let mostrarHeader = true;
+let productos = [];
 
 document.addEventListener('DOMContentLoaded', () => {
     iniciarApp();
@@ -14,9 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function iniciarApp() {
     agregarEventListeners();
-    mostrarProductos(listaProductos, 'Star Wars');
-    mostrarProductos(listaProductos, 'Consolas');
-    mostrarProductos(listaProductos, 'Diversos');
+    mostrarProductos();    
 };
 
 function agregarEventListeners() {
@@ -24,9 +24,9 @@ function agregarEventListeners() {
 
     inputBuscador.addEventListener('keyup', (e) => {
         if(e.target.value === "") {
-            mostrarProductos(listaProductos, 'Star Wars');
-            mostrarProductos(listaProductos, 'Consolas');
-            mostrarProductos(listaProductos, 'Diversos');
+            mostrarProductos();
+            //mostrarProductos(listaProductos, 'Consolas');
+            //mostrarProductos(listaProductos, 'Diversos');
         } else if(e.target.value.length > 3) {
             filtrarProductos(e.target.value);
         }
@@ -59,174 +59,77 @@ function consolas() {
         });
 }
 
-function mostrarProductos(listaProductos, criterio) {    
-    switch(criterio) {
+async function mostrarProductos() {
+    productos = await obtenerProductos();
+    productos.forEach(producto => {
+        mostrarProductoEnHTML(producto);
+    });
+}
+
+function mostrarProductoEnHTML(producto) {    
+    const { id, nombre, precio, imagen, categoria } = producto;
+
+    const divProductosCard = document.createElement('DIV');
+    divProductosCard.classList.add('productos-card');
+
+    const imgProducto = document.createElement('IMG');
+    imgProducto.classList.add('imagen-producto');
+    imgProducto.src = `img/${imagen}`;
+
+    const divProducto = document.createElement('DIV');
+
+    const nombreProducto = document.createElement('H4');
+    nombreProducto.textContent = `${nombre}`;
+    divProducto.appendChild(nombreProducto);
+
+    const precioProducto = document.createElement('P');
+    precioProducto.textContent = `$ ${precio}`;
+    divProducto.appendChild(precioProducto);
+
+    const enlaceProducto = document.createElement('A');
+    enlaceProducto.setAttribute('data-id', `${id}`);
+    enlaceProducto.setAttribute('href', `producto.html?id=${id}`);
+
+    enlaceProducto.textContent = `Ver Producto`;
+    divProducto.appendChild(enlaceProducto);
+
+    divProductosCard.appendChild(imgProducto);
+    divProductosCard.appendChild(divProducto);
+
+    switch(categoria) {
         case 'Star Wars':
-            const listaFiltradaStarwars = listaProductos.filter(filtrarStarwars);
-            
-            if(listaFiltradaStarwars.length === 0) {
-                productosDivStarwars.previousElementSibling.style.display='none';
-                return;
-            }
-
-            productosDivStarwars.previousElementSibling.style.display = 'flex';            
-    
-            listaFiltradaStarwars.forEach(producto => {
-                const { id, nombre, precio, imagen } = producto;
-
-                const divProductosCard = document.createElement('DIV');
-                divProductosCard.classList.add('productos-card');
-
-                const imgProducto = document.createElement('IMG');
-                imgProducto.classList.add('imagen-producto');
-                imgProducto.src = `img/${imagen}`;
-
-                const divProducto = document.createElement('DIV');
-
-                const nombreProducto = document.createElement('H4');
-                nombreProducto.textContent = `${nombre}`;
-                divProducto.appendChild(nombreProducto);
-
-                const precioProducto = document.createElement('P');
-                precioProducto.textContent = `$ ${precio}`;
-                divProducto.appendChild(precioProducto);
-
-                const enlaceProducto = document.createElement('A');
-                enlaceProducto.setAttribute('data-id', `${id}`);
-                enlaceProducto.setAttribute('href', 'producto.html');
-
-                enlaceProducto.textContent = `Ver Producto`;
-                divProducto.appendChild(enlaceProducto);
-
-                divProductosCard.appendChild(imgProducto);
-                divProductosCard.appendChild(divProducto);
-                
-                productosDivStarwars.appendChild(divProductosCard);
-            });
+            productosDivStarwars.appendChild(divProductosCard);
             break;
-
         case 'Consolas':
-            const listaFiltradaConsolas = listaProductos.filter(filtrarConsolas);
-
-            if(listaFiltradaConsolas.length === 0) {
-                productosDivConsolas.previousElementSibling.style.display='none';
-                return;
-            }
-
-            productosDivConsolas.previousElementSibling.style.display = 'flex';
-    
-            listaFiltradaConsolas.forEach(producto => {
-                const { id, nombre, precio, imagen } = producto;
-
-                const divProductosCard = document.createElement('DIV');
-                divProductosCard.classList.add('productos-card');
-
-                const imgProducto = document.createElement('IMG');
-                imgProducto.classList.add('imagen-producto');
-                imgProducto.src = `img/${imagen}`;
-
-                const divProducto = document.createElement('DIV');
-
-                const nombreProducto = document.createElement('H4');
-                nombreProducto.textContent = `${nombre}`;
-                divProducto.appendChild(nombreProducto);
-
-                const precioProducto = document.createElement('P');
-                precioProducto.textContent = `$ ${precio}`;
-                divProducto.appendChild(precioProducto);
-
-                const enlaceProducto = document.createElement('A');
-                enlaceProducto.setAttribute('data-id', `${id}`);
-                enlaceProducto.textContent = `Ver Producto`;
-                divProducto.appendChild(enlaceProducto);
-
-                divProductosCard.appendChild(imgProducto);
-                divProductosCard.appendChild(divProducto);
-                
-                productosDivConsolas.appendChild(divProductosCard);
-            });
+            productosDivConsolas.appendChild(divProductosCard);
             break;
-
         case 'Diversos':
-            const listaFiltradaDiversos = listaProductos.filter(filtrarDiversos);
-
-            if(listaFiltradaDiversos.length === 0) {
-                productosDivDiversos.previousElementSibling.style.display='none';
-                return;
-            }
-
-            productosDivDiversos.previousElementSibling.style.display = 'flex';
-    
-            listaFiltradaDiversos.forEach(producto => {
-                const { id, nombre, precio, imagen } = producto;
-
-                const divProductosCard = document.createElement('DIV');
-                divProductosCard.classList.add('productos-card');
-
-                const imgProducto = document.createElement('IMG');
-                imgProducto.classList.add('imagen-producto');
-                imgProducto.src = `img/${imagen}`;
-
-                const divProducto = document.createElement('DIV');
-
-                const nombreProducto = document.createElement('H4');
-                nombreProducto.textContent = `${nombre}`;
-                divProducto.appendChild(nombreProducto);
-
-                const precioProducto = document.createElement('P');
-                precioProducto.textContent = `$ ${precio}`;
-                divProducto.appendChild(precioProducto);
-
-                const enlaceProducto = document.createElement('A');
-                enlaceProducto.setAttribute('data-id', `${id}`);
-                enlaceProducto.textContent = `Ver Producto`;
-                divProducto.appendChild(enlaceProducto);
-
-                divProductosCard.appendChild(imgProducto);
-                divProductosCard.appendChild(divProducto);
-                
-                productosDivDiversos.appendChild(divProductosCard);
-            });   
+            productosDivDiversos.appendChild(divProductosCard);
             break;
-
         default:
             break;
     }
 }
 
-function filtrarStarwars(producto) {
-    if(producto.categoria === 'Star Wars') {
-        return producto;
-    }
-}
-
-function filtrarConsolas(producto) {
-    if(producto.categoria === 'Consolas') {
-        return producto;
-    }
-}
-
-function filtrarDiversos(producto) {
-    if(producto.categoria === 'Diversos') {
-        return producto;
-    }
-}
-
 function filtrarProductos(criterio) {
+    
     let criterioBusqueda = criterio.toLowerCase();
-    const listaFiltradaTodas = listaProductos.filter((producto)=> {
+    const listaFiltradaTodas = productos.filter((producto)=> {
+        
         let nombre = producto.nombre.toLowerCase();
         
         if(nombre.indexOf(criterioBusqueda) !== -1) {
             return producto;
         }
     });
-    
+
     limpiarHtml();
 
-    mostrarProductos(listaFiltradaTodas, 'Star Wars');
-    mostrarProductos(listaFiltradaTodas, 'Consolas');
-    mostrarProductos(listaFiltradaTodas, 'Diversos');
+    listaFiltradaTodas.forEach((producto)=> {
+        console.log(producto);
+        mostrarProductoEnHTML(producto);        
+    });
+    
 }
 
 function limpiarHtml() {
