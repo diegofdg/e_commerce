@@ -32,9 +32,9 @@ function agregarEventListeners() {
     dropZone.addEventListener('drop', drop, false);
     btnBuscarArchivo.addEventListener('click', buscarArchivo);
     inputBuscarArchivo.addEventListener('change', verificarArchivo);
-    inputAgregarNombre.addEventListener('blur', validarProducto);
-    inputAgregarMensaje.addEventListener('blur', validarProducto);
-    inputAgregarPrecio.addEventListener('blur', validarProducto);
+    inputAgregarNombre.addEventListener('keyup', validarProducto);
+    inputAgregarMensaje.addEventListener('keyup', validarProducto);
+    inputAgregarPrecio.addEventListener('keyup', validarProducto);
     formularioAgregar.addEventListener('submit', agregarProducto);
 }
 
@@ -91,12 +91,16 @@ function validarProducto(e) {
             if(nombre === '') {
                 mostrarMensaje('El nombre no puede estar vacío', 'error', campoAgregarNombre);
                 errorAgregarNombre = true;
+                btnAgregarEnviar.disabled = true;
+                btnAgregarEnviar.classList.add('disabled');
                 return;
             }
 
             if(nombre.length > 20) {
                 mostrarMensaje('El nombre no puede contener más de 20 caracteres', 'error', campoAgregarNombre);
                 errorAgregarNombre = true;
+                btnAgregarEnviar.disabled = true;
+                btnAgregarEnviar.classList.add('disabled');
                 return;
             }
 
@@ -110,6 +114,8 @@ function validarProducto(e) {
             if(precio === '') {
                 mostrarMensaje('El precio no puede estar vacío', 'error', campoAgregarPrecio);
                 errorAgregarPrecio = true;
+                btnAgregarEnviar.disabled = true;
+                btnAgregarEnviar.classList.add('disabled');
                 return;
             }
 
@@ -122,12 +128,16 @@ function validarProducto(e) {
             if(mensaje === '') {
                 mostrarMensaje('El mensaje no puede estar vacío', 'error', campoAgregarMensaje);
                 errorAgregarMensaje = true;
+                btnAgregarEnviar.disabled = true;
+                btnAgregarEnviar.classList.add('disabled');
                 return;
             }
 
             if(mensaje.length > 150) {
                 mostrarMensaje('El mensaje no puede contener más de 150 caracteres', 'error', campoAgregarMensaje);
                 errorAgregarMensaje = true;
+                btnAgregarEnviar.disabled = true;
+                btnAgregarEnviar.classList.add('disabled');
                 return;
             }
 

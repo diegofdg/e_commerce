@@ -23,7 +23,11 @@ function agregarEventListeners() {
     btnHero.addEventListener('click', consolas);
 
     inputBuscador.addEventListener('keyup', (e) => {
-        if(e.target.value.length > 3) {
+        if(e.target.value === "") {
+            mostrarProductos(listaProductos, 'Star Wars');
+            mostrarProductos(listaProductos, 'Consolas');
+            mostrarProductos(listaProductos, 'Diversos');
+        } else if(e.target.value.length > 3) {
             filtrarProductos(e.target.value);
         }
     });
