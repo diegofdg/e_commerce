@@ -1,4 +1,4 @@
-const url = 'http://localhost:3000/productos';
+const url = 'http://localhost:4000/productos';
 
 export const obtenerProductos = async () => {
     try {
@@ -15,6 +15,22 @@ export const obtenerProducto = async id => {
         const resultado = await fetch(`${url}/${id}`);
         const producto = await resultado.json();
         return producto;
+        
+    } catch (error) {
+        console.log(error);        
+    }
+}
+
+export const nuevoProducto = async producto => {
+    try {
+        await fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(producto),
+            headers: {
+                'Content-Type': 'application/json' 
+            }
+        });
+        //window.location.href = 'index.html';
         
     } catch (error) {
         console.log(error);        

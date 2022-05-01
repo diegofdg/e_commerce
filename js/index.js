@@ -1,4 +1,5 @@
 import { obtenerProductos } from './API.js';
+
 const btnHero = document.getElementById('btn-hero');
 const inputBuscador = document.getElementById('input-buscador');
 const iconoBuscador = document.getElementById('icono-buscador');
@@ -25,8 +26,6 @@ function agregarEventListeners() {
     inputBuscador.addEventListener('keyup', (e) => {
         if(e.target.value === "") {
             mostrarProductos();
-            //mostrarProductos(listaProductos, 'Consolas');
-            //mostrarProductos(listaProductos, 'Diversos');
         } else if(e.target.value.length > 3) {
             filtrarProductos(e.target.value);
         }
@@ -75,6 +74,7 @@ function mostrarProductoEnHTML(producto) {
     const imgProducto = document.createElement('IMG');
     imgProducto.classList.add('imagen-producto');
     imgProducto.src = `img/${imagen}`;
+    imgProducto.alt = `imagen ${nombre}`;
 
     const divProducto = document.createElement('DIV');
 

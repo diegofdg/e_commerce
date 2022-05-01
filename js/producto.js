@@ -76,7 +76,7 @@ function mostrarProductoEnHTML(producto) {
 
     const enlaceProducto = document.createElement('A');
     enlaceProducto.setAttribute('data-id', `${id}`);
-    enlaceProducto.setAttribute('href', 'producto.html');
+    enlaceProducto.setAttribute('href', `producto.html?id=${id}`);
 
     enlaceProducto.textContent = `Ver Producto`;
     divProducto.appendChild(enlaceProducto);

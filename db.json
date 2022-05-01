@@ -143,6 +143,14 @@
       "precio": 106,
       "descripcion": "Voluptas voluptatum quibusdam similique, class debitis alias maecenas eveniet ridiculus, facilis fusce! Ullam conubia? Sociis, minima malesuada habitasse distinctio sequi aliqua malesuada. Quisque deleniti proin expedita, aliquid litora. Iste recusandae? Commodo, quia ridiculus doloribus vero dictum? Penatibus donec placeat faucibus, dolorum do. Animi porta anim magnam",
       "imagen": "diversos_img_06.jpg"
+    },
+    {
+      "categoria": "Diversos",
+      "nombre": "Nuevo Producto",
+      "precio": "100",
+      "mensaje": "Este es un nuevo producto",
+      "imagen": "imagen_nuevo_producto.jpg",
+      "id": 90124
     }
   ]
 }

@@ -1,3 +1,5 @@
+import { nuevoProducto } from './API.js';
+
 const btnBuscarArchivo = document.getElementById('btn-buscar-archivo');
 const formularioAgregar = document.getElementById('formulario-agregar');
 const inputBuscarArchivo = document.getElementById('input-buscar-archivo');
@@ -155,8 +157,25 @@ function validarProducto(e) {
     }
 }
 
-function agregarProducto(e) {
+async function agregarProducto(e) {
     e.preventDefault();
+
+    const categoria = "Diversos";
+    const nombre = inputAgregarNombre.value;
+    const precio = inputAgregarPrecio.value;
+    const mensaje = inputAgregarMensaje.value;
+    const imagen = "imagen_nuevo_producto.jpg";
+    
+
+    const producto = {
+        categoria,
+        nombre,
+        precio,
+        mensaje,
+        imagen
+    }
+
+    await nuevoProducto(producto);
     
     const spinner = document.querySelector('#spinner-agregar');
     spinner.style.display = 'flex';
