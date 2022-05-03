@@ -10,14 +10,17 @@ const btnAgregarEnviar = document.getElementById('btn-agregar-enviar');
 const campoAgregarNombre = document.getElementById('campo-agregar-nombre');
 const campoAgregarPrecio = document.getElementById('campo-agregar-precio');
 const campoAgregarMensaje = document.getElementById('campo-agregar-mensaje');
+const selectCategoria = document.getElementById('categoria');
 const contenedorCamposAgregar = document.getElementById('contenedor-campos-agregar');
 const iconoAgregarImagen = document.getElementById('icono-agregar-imagen');
 const dropZone = document.getElementById('drop-zone');
 const dropZoneDiv = document.getElementById('drop-zone-div');
 let archivo;
+let imagenArchivo = [];
 
 let errorAgregarNombre = true;
 let errorAgregarMensaje = true;
+let errorAgregarCategoria = true;
 let errorAgregarPrecio = true;
 let errorAgregarImagen = true;
 
@@ -37,6 +40,7 @@ function agregarEventListeners() {
     inputAgregarNombre.addEventListener('keyup', validarProducto);
     inputAgregarMensaje.addEventListener('keyup', validarProducto);
     inputAgregarPrecio.addEventListener('keyup', validarProducto);
+    selectCategoria.addEventListener('change', validarProducto);
     formularioAgregar.addEventListener('submit', agregarProducto);
 }
 
@@ -57,10 +61,12 @@ function leerImagen() {
     if (regexSoloImagenes.includes(tipoArchivo)) {
         let fileReader = new FileReader();
         fileReader.readAsDataURL(archivo);
-        fileReader.onload = () => {
-            let fileURL = fileReader.result;
-            dropZone.style.backgroundImage="url('" + fileURL + "')";
-            dropZone.style.backgroundSize= "contain";
+        fileReader.onload = () => {            
+            imagenArchivo.push(fileReader.result);
+            dropZone.style.backgroundImage="url('" + imagenArchivo[0] + "')";
+            dropZone.style.backgroundSize= "cover";
+            dropZone.style.backgroundRepeat= "no-repeat";
+            dropZone.style.backgroundPosition= "center center"
             dropZoneDiv.style.display="none";
         }
     } else {
@@ -146,12 +152,25 @@ function validarProducto(e) {
             errorAgregarMensaje = false;
 
             break;
+        
+        case 'categoria':
+            const categoriaSeleccionada = document.querySelector('#categoria').value;
+            if(categoriaSeleccionada === '') {
+                mostrarMensaje('Debes seleccionar una categoría', 'error', campoAgregarCategoria);
+                errorAgregarCategoria = true;
+                btnAgregarEnviar.disabled = true;
+                btnAgregarEnviar.classList.add('disabled');
+            }
+
+            errorAgregarCategoria = false;
+
+            break;
 
         default:
             return;
     }
 
-    if(!errorAgregarImagen && !errorAgregarNombre && !errorAgregarPrecio && !errorAgregarMensaje) {
+    if(!errorAgregarImagen && !errorAgregarNombre && !errorAgregarPrecio && !errorAgregarMensaje &&!errorAgregarCategoria) {
         btnAgregarEnviar.disabled = false;
         btnAgregarEnviar.classList.remove('disabled');        
     }
@@ -160,12 +179,27 @@ function validarProducto(e) {
 async function agregarProducto(e) {
     e.preventDefault();
 
-    const categoria = "Diversos";
+    let categoriaSeleccionada = document.querySelector('#categoria').value;
+
+    switch(categoriaSeleccionada) {
+        case '1':
+            categoriaSeleccionada = 'Star Wars';
+            break;
+        case '2':
+            categoriaSeleccionada = 'Consolas';
+            break;
+        case '3':
+            categoriaSeleccionada = 'Diversos';
+            break;
+        default:
+            break;
+    }
+
+    const categoria = categoriaSeleccionada;
     const nombre = inputAgregarNombre.value;
     const precio = inputAgregarPrecio.value;
     const mensaje = inputAgregarMensaje.value;
-    const imagen = "imagen_nuevo_producto.jpg";
-    
+    const imagen = imagenArchivo[0];    
 
     const producto = {
         categoria,

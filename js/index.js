@@ -73,7 +73,7 @@ function mostrarProductoEnHTML(producto) {
 
     const imgProducto = document.createElement('IMG');
     imgProducto.classList.add('imagen-producto');
-    imgProducto.src = `img/${imagen}`;
+    imgProducto.src = `${imagen}`;
     imgProducto.alt = `imagen ${nombre}`;
 
     const divProducto = document.createElement('DIV');

@@ -42,7 +42,15 @@ function mostrarProductoEnHTML(producto) {
 
     const imgProducto = document.createElement('IMG');
     imgProducto.classList.add('imagen-producto');
-    imgProducto.src = `img/${imagen}`;
+    imgProducto.src = `${imagen}`;
+
+    const imgBorrar = document.createElement('IMG');
+    imgBorrar.classList.add('icono-borrar');
+    imgBorrar.src = 'img/icono_borrar.svg';
+
+    const imgEditar = document.createElement('IMG');
+    imgEditar.classList.add('icono-editar');
+    imgEditar.src = 'img/icono_editar.svg';
 
     const divProducto = document.createElement('DIV');
 
@@ -62,6 +70,8 @@ function mostrarProductoEnHTML(producto) {
     divProducto.appendChild(enlaceProducto);
 
     divProductosCard.appendChild(imgProducto);
+    divProductosCard.appendChild(imgBorrar);
+    divProductosCard.appendChild(imgEditar);
     divProductosCard.appendChild(divProducto);
     
     productosDivTodos.appendChild(divProductosCard);
@@ -80,7 +90,7 @@ function mostrarProductos2(listaProductos) {
 
         const imgProducto = document.createElement('IMG');
         imgProducto.classList.add('imagen-producto');
-        imgProducto.src = `img/${imagen}`;
+        imgProducto.src = `${imagen}`;
 
         const imgBorrar = document.createElement('IMG');
         imgBorrar.classList.add('icono-borrar');

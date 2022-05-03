@@ -22,7 +22,7 @@ function mostrarProducto(producto) {
 
     const imgProducto = document.createElement('IMG');
     imgProducto.classList.add('imagen-producto');
-    imgProducto.src = `img/${imagen}`;
+    imgProducto.src = `${imagen}`;
 
     const divProducto = document.createElement('DIV');
     divProducto.classList.add('contenedor', 'contenedor-detalle-producto');
@@ -62,7 +62,7 @@ function mostrarProductoEnHTML(producto) {
 
     const imgProducto = document.createElement('IMG');
     imgProducto.classList.add('imagen-producto');
-    imgProducto.src = `img/${imagen}`;
+    imgProducto.src = `${imagen}`;
 
     const divProducto = document.createElement('DIV');
 
