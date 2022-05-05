@@ -17,8 +17,8 @@ function iniciarApp() {
 };
 
 function agregarEventListeners() {
-    inputEmail.addEventListener('blur', validarLogin);
-    inputPassword.addEventListener('blur', validarLogin);
+    inputEmail.addEventListener('keyup', validarLogin);
+    inputPassword.addEventListener('keyup', validarLogin);
     btnEnviarLogin.addEventListener('click', submitLogin);
 }
 
@@ -49,6 +49,12 @@ function validarLogin(e) {
             if(password === '') {
                 errorPassword = true;
                 mostrarMensaje('El password no puede estar vacío', 'error', formularioLogin.parentElement.nextElementSibling);
+                return;
+            }
+
+            if(password.length < 6) {
+                errorMensaje = true;
+                mostrarMensaje('El password no puede contener menos de 6 caracteres', 'error', formularioLogin.parentElement.nextElementSibling);
                 return;
             }
 
@@ -99,6 +105,6 @@ function mostrarMensaje(mensaje, tipo, origen) {
                 btnEnviarLogin.disabled = true;
                 btnEnviarLogin.classList.add('disabled');
             }
-        }, 3000);
+        }, 2000);
     }
 }
