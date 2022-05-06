@@ -60,9 +60,10 @@
 
     .contacto-nav li {
         line-height: 2.6;
-    }    
+    }
     
     /*** Mensajes ***/ 
+    
     .error,
     .exito {
         width: 42.3rem;

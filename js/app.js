@@ -19,9 +19,9 @@ function iniciarApp() {
 
 function agregarEventListeners() {
     btnLogin.addEventListener('click', login);
-    inputContactoNombre.addEventListener('blur', validarMensaje);
-    inputContactoMensaje.addEventListener('blur', validarMensaje);
-    btnContactoEnviar.addEventListener('click', enviarMensaje)
+    inputContactoNombre.addEventListener('keyup', validarMensaje);
+    inputContactoMensaje.addEventListener('keyup', validarMensaje);
+    btnContactoEnviar.addEventListener('click', enviarMensaje);
 }
 
 function login() {
@@ -32,22 +32,25 @@ function validarMensaje(e) {
     e.preventDefault();
     
     switch(e.target.id) {
-        case 'input-contacto-nombre':            
+        case 'input-contacto-nombre':
             const nombre = inputContactoNombre.value;
             if(nombre === '') {
                 errorNombre = true;
                 mostrarMensajeContacto('El nombre no puede estar vacío', 'error', campoContactoNombre);
+                btnContactoEnviar.disabled = true;
+                btnContactoEnviar.classList.add('disabled');
                 return;
             }
 
             if(nombre.length > 40) {
-                mostrarMensajeContacto('El nombre no puede contener más de 40 caracteres', 'error', campoContactoNombre);
                 errorNombre = true;
+                mostrarMensajeContacto('El nombre no puede contener más de 40 caracteres', 'error', campoContactoNombre);
+                btnContactoEnviar.disabled = true;
+                btnContactoEnviar.classList.add('disabled');
                 return;
             }
 
             errorNombre = false;
-
             break;
 
         case 'input-contacto-mensaje':
@@ -55,17 +58,20 @@ function validarMensaje(e) {
             if(mensaje === '') {
                 errorMensaje = true;
                 mostrarMensajeContacto('El mensaje no puede estar vacío', 'error', campoContactoMensaje);
+                btnContactoEnviar.disabled = true;
+                btnContactoEnviar.classList.add('disabled');
                 return;
             }
 
             if(mensaje.length > 60) {
-                mostrarMensajeContacto('El mensaje no puede contener más de 60 caracteres', 'error', campoContactoMensaje);
                 errorMensaje = true;
+                mostrarMensajeContacto('El mensaje no puede contener más de 60 caracteres', 'error', campoContactoMensaje);
+                btnContactoEnviar.disabled = true;
+                btnContactoEnviar.classList.add('disabled');
                 return;
             }
 
             errorMensaje = false;
-
             break;
 
         default:
@@ -84,7 +90,7 @@ function enviarMensaje(e) {
     const spinner = document.querySelector('#spinner');
     spinner.style.display = 'flex';
 
-    setTimeout(()=>{
+    setTimeout(() => {
         spinner.style.display = 'none';
         mostrarMensajeContacto('El email se ha enviado exitosamente', 'exito', btnContactoEnviar.parentElement);
     }, 3000);
@@ -104,7 +110,7 @@ function mostrarMensajeContacto(mensaje, tipo, origen) {
         divMensaje.textContent = mensaje;
         origen?.parentElement.insertBefore(divMensaje, origen);
         
-        setTimeout(()=> {
+        setTimeout(() => {
             divMensaje.remove();
             if (tipo == 'exito') {
                 formularioContacto.reset();

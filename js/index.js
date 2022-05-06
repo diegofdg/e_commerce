@@ -17,22 +17,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function iniciarApp() {
     agregarEventListeners();
-    mostrarProductos();    
+    mostrarProductos();
 };
 
 function agregarEventListeners() {
     btnHero.addEventListener('click', consolas);
 
     inputBuscador.addEventListener('keyup', (e) => {
-        if(e.target.value === "") {
+        console.log(e.target.value);
+        
+        if(e.target.value == "") {
             mostrarProductos();
         } else if(e.target.value.length > 3) {
             filtrarProductos(e.target.value);
         }
     });
 
-    iconoBuscador.addEventListener('click', () => {        
-        let mediaqueryList = window.matchMedia("(max-width: 767px)");
+    iconoBuscador.addEventListener('click', () => {
+        let mediaqueryList = window.matchMedia('(max-width: 767px)');
         if(mediaqueryList.matches) {
             mostrarHeader = !mostrarHeader;
             loginDiv.style.display = 'none';
@@ -46,26 +48,34 @@ function agregarEventListeners() {
             }
             
         } else {
+            loginDiv.style.display = 'flex';
+            logoDiv.style.display = 'flex';
             inputBuscador.style.display = 'block';
         }
     });
 }
 
 function consolas() {
-    document.getElementById("consolas")
+    document.getElementById('consolas')
         .scrollIntoView({
             behavior: 'smooth'
         });
 }
 
 async function mostrarProductos() {
+    document.getElementById('star-wars-productos-header').style.display = 'flex';
+    document.getElementById('consolas-productos-header').style.display = 'flex';
+    document.getElementById('diversos-productos-header').style.display = 'flex';
+    
+    limpiarHtml();
+    
     productos = await obtenerProductos();
     productos.forEach(producto => {
         mostrarProductoEnHTML(producto);
     });
 }
 
-function mostrarProductoEnHTML(producto) {    
+function mostrarProductoEnHTML(producto) {
     const { id, nombre, precio, imagen, categoria } = producto;
 
     const divProductosCard = document.createElement('DIV');
@@ -112,12 +122,9 @@ function mostrarProductoEnHTML(producto) {
 }
 
 function filtrarProductos(criterio) {
-    
     let criterioBusqueda = criterio.toLowerCase();
-    const listaFiltradaTodas = productos.filter((producto)=> {
-        
+    const listaFiltradaTodas = productos.filter(producto => {
         let nombre = producto.nombre.toLowerCase();
-        
         if(nombre.indexOf(criterioBusqueda) !== -1) {
             return producto;
         }
@@ -125,21 +132,43 @@ function filtrarProductos(criterio) {
 
     limpiarHtml();
 
-    listaFiltradaTodas.forEach((producto)=> {
-        console.log(producto);
-        mostrarProductoEnHTML(producto);        
+    listaFiltradaTodas.forEach(producto => {
+        mostrarProductoEnHTML(producto);
     });
-    
+
+    limpiarStarWars();
+    limpiarConsolas();
+    limpiarDiversos();
 }
 
 function limpiarHtml() {
     while(productosDivStarwars.firstChild) {
         productosDivStarwars.removeChild(productosDivStarwars.firstChild);
     }
+
     while(productosDivConsolas.firstChild) {
         productosDivConsolas.removeChild(productosDivConsolas.firstChild);
     }
+
     while(productosDivDiversos.firstChild) {
         productosDivDiversos.removeChild(productosDivDiversos.firstChild);
+    }
+}
+
+function limpiarStarWars() {
+    if(productosDivStarwars.firstElementChild === null) {
+        document.getElementById('star-wars-productos-header').style.display = 'none';
+    }
+}
+
+function limpiarConsolas() {
+    if(productosDivConsolas.firstElementChild === null) {
+        document.getElementById('consolas-productos-header').style.display = 'none';
+    }
+}
+
+function limpiarDiversos() {
+    if(productosDivDiversos.firstElementChild === null) {
+        document.getElementById('diversos-productos-header').style.display = 'none';
     }
 }
