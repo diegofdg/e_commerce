@@ -1,4 +1,4 @@
-import { obtenerProductos, eliminarProducto } from './API.js';
+import { obtenerProductos, obtenerProducto, modificarProducto, eliminarProducto } from './API.js';
 
 const inputBuscador = document.getElementById('input-buscador');
 const iconoBuscador = document.getElementById('icono-buscador');
@@ -53,6 +53,9 @@ function mostrarProductoEnHTML(producto) {
     imgBorrar.src = 'img/icono_borrar.svg';
 
     const imgEditar = document.createElement('IMG');
+    imgEditar.addEventListener('click', (e) => {
+        editarProducto(e.target.parentElement);
+    });
     imgEditar.classList.add('icono-editar');
     imgEditar.src = 'img/icono_editar.svg';
 
@@ -84,6 +87,13 @@ function agregarProducto() {
     window.location.replace("agregar-producto.html");
 }
 
-function borrarProducto(producto) {
-    eliminarProducto(Number(producto.getAttribute('data-id')));
+function borrarProducto(productoEliminar) {
+    eliminarProducto(Number(productoEliminar.getAttribute('data-id')));
+}
+
+async function editarProducto(productoEditar) {
+    const idProducto = Number(productoEditar.getAttribute('data-id'));    
+    
+    window.location.replace(`agregar-producto.html?id=${idProducto}`);   
+    
 }

@@ -1,4 +1,4 @@
-import { nuevoProducto } from './API.js';
+import { modificarProducto, nuevoProducto, obtenerProducto } from './API.js';
 
 const btnBuscarArchivo = document.getElementById('btn-buscar-archivo');
 const formularioAgregar = document.getElementById('formulario-agregar');
@@ -17,6 +17,8 @@ const dropZone = document.getElementById('drop-zone');
 const dropZoneDiv = document.getElementById('drop-zone-div');
 let archivo;
 let imagenArchivo = [];
+let editar = false;
+let idProducto;
 
 let errorAgregarNombre = true;
 let errorAgregarMensaje = true;
@@ -26,10 +28,20 @@ let errorAgregarImagen = true;
 
 iniciarApp();
 
-function iniciarApp() {
+async function iniciarApp() {
+    const parametrosURL = new URLSearchParams(window.location.search);
+    idProducto = parseInt(parametrosURL.get('id'));
     agregarEventListeners();
     btnAgregarEnviar.disabled = true;
     btnAgregarEnviar.classList.add('disabled');
+
+    if(idProducto !== NaN) {
+        editar = true;
+        btnAgregarEnviar.disabled = false;
+        btnAgregarEnviar.classList.remove('disabled');
+        const producto = await obtenerProducto(idProducto);
+        mostrarProducto(producto);
+    }    
 };
 
 function agregarEventListeners() {
@@ -198,18 +210,30 @@ async function agregarProducto(e) {
     const categoria = categoriaSeleccionada;
     const nombre = inputAgregarNombre.value;
     const precio = inputAgregarPrecio.value;
-    const mensaje = inputAgregarMensaje.value;
+    const descripcion = inputAgregarMensaje.value;
     const imagen = imagenArchivo[0];    
 
-    const producto = {
+    const productoNuevo = {
+        id: idProducto,
         categoria,
         nombre,
         precio,
-        mensaje,
+        descripcion,
         imagen
     }
 
-    await nuevoProducto(producto);
+    console.log(productoNuevo);
+    console.log(editar);
+    
+    
+    
+
+    if(editar) {
+        console.log('entro aca');
+        await modificarProducto(productoNuevo);
+    } else {
+        await nuevoProducto(productoNuevo);
+    }    
     
     const spinner = document.querySelector('#spinner-agregar');
     spinner.style.display = 'flex';
@@ -246,4 +270,40 @@ function mostrarMensaje(mensaje, tipo, origen) {
             }
         }, 3000);
     }
+}
+
+function mostrarProducto(producto) {
+    const { nombre, precio, descripcion, imagen, categoria } = producto;
+    console.log(producto);    
+
+    imagenArchivo.push(producto.imagen);    
+    dropZone.style.backgroundImage="url('" + imagenArchivo[0] + "')";
+    dropZone.style.backgroundSize= "cover";
+    dropZone.style.backgroundRepeat= "no-repeat";
+    dropZone.style.backgroundPosition= "center center"
+    dropZoneDiv.style.display="none";
+
+    inputAgregarNombre.value = nombre;
+    inputAgregarPrecio.value = precio;
+    inputAgregarMensaje.value = descripcion;
+
+    let categorias = document.querySelector('#categoria');
+
+    switch(categoria) {
+        case 'Star Wars':
+            categorias.value = '1';
+            break;
+        case 'Consolas':
+            categorias.value = '2';
+            break;
+        case 'Diversos':
+            categorias.value = '3';
+            break;
+        default:
+            break;
+    }
+    
+    
+    
+    
 }
