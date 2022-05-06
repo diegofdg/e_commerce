@@ -7,8 +7,9 @@ const expresionRegular = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|
 let errorEmail = true;
 let errorPassword = true;
 
-
-iniciarApp();
+document.addEventListener('DOMContentLoaded', () => {
+    iniciarApp();
+});
 
 function iniciarApp() {
     agregarEventListeners();
@@ -23,7 +24,7 @@ function agregarEventListeners() {
 }
 
 function validarLogin(e) {
-    e.preventDefault();    
+    e.preventDefault();
     
     switch(e.target.id) {
         case 'input-email':
@@ -41,7 +42,6 @@ function validarLogin(e) {
             }
 
             errorEmail = false;
-
             break;
 
         case 'input-password':
@@ -59,7 +59,6 @@ function validarLogin(e) {
             }
 
             errorPassword = false;
-
             break;
 
         default:
@@ -77,7 +76,7 @@ function submitLogin(e) {
 
     if(inputEmail.value == 'correo@correo.com') {
         if(inputPassword.value == '123456') {
-            window.location.replace("productos.html");
+            window.location.replace('productos.html');
         }
     } else {
         mostrarMensaje('Email o Password incorrectos', 'error', formularioLogin.parentElement.nextElementSibling);

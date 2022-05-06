@@ -9,7 +9,9 @@ const campoContactoMensaje = document.getElementById('campo-contacto-mensaje');
 let errorNombre = true;
 let errorMensaje = true;
 
-iniciarApp();
+document.addEventListener('DOMContentLoaded', () => {
+    iniciarApp();
+});
 
 function iniciarApp() {
     agregarEventListeners();
@@ -117,6 +119,6 @@ function mostrarMensajeContacto(mensaje, tipo, origen) {
                 btnContactoEnviar.disabled = true;
                 btnContactoEnviar.classList.add('disabled');
             }
-        }, 3000);
+        }, 2000);
     }
 }
