@@ -1,9 +1,13 @@
-import { obtenerProductos, obtenerProducto, modificarProducto, eliminarProducto } from './API.js';
+import { obtenerProductos, eliminarProducto } from './API.js';
 
 const inputBuscador = document.getElementById('input-buscador');
 const iconoBuscador = document.getElementById('icono-buscador');
+const loginDiv = document.getElementById('login-div');
+const logoDiv = document.getElementById('logo-div');
+const headerTodosProductos = document.getElementById('header-todos-productos');
 const btnAgregar = document.getElementById('btn-agregar');
 const productosDivTodos = document.getElementById('productos-div-todos');
+let mostrarHeader = true;
 let productos = [];
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -25,17 +29,42 @@ function agregarEventListeners() {
             filtrarProductos(e.target.value);
         }
     });
+
+    iconoBuscador.addEventListener('click', () => {
+        let mediaqueryList = window.matchMedia('(max-width: 767px)');
+        if(mediaqueryList.matches) {
+            mostrarHeader = !mostrarHeader;
+            loginDiv.style.display = 'none';
+            logoDiv.style.display = 'none';
+            inputBuscador.style.display = 'block';
+
+            if(mostrarHeader) {
+                loginDiv.style.display = 'flex';
+                logoDiv.style.display = 'flex';
+                inputBuscador.style.display = 'none';
+            }
+            
+        } else {
+            loginDiv.style.display = 'flex';
+            logoDiv.style.display = 'flex';
+            inputBuscador.style.display = 'block';
+        }
+    });
 }
 
 async function mostrarProductos() {
-    const productos = await obtenerProductos();
+    headerTodosProductos.textContent = 'Todos los productos';
+    
+    limpiarHtml();
+
+    productos = await obtenerProductos();
     productos.forEach(producto => {
         mostrarProductoEnHTML(producto);
     });
 }
 
 function mostrarProductoEnHTML(producto) {
-    const { id, nombre, precio, imagen, categoria } = producto;
+    const { id, nombre, precio, imagen } = producto;
 
     const divProductosCard = document.createElement('DIV');
     divProductosCard.setAttribute('data-id', `${id}`);
@@ -44,12 +73,13 @@ function mostrarProductoEnHTML(producto) {
     const imgProducto = document.createElement('IMG');
     imgProducto.classList.add('imagen-producto');
     imgProducto.src = `${imagen}`;
+    imgProducto.alt = `imagen ${nombre}`;
 
     const imgBorrar = document.createElement('IMG');
     imgBorrar.addEventListener('click', (e) => {
         borrarProducto(e.target.parentElement);
     });
-    imgBorrar.classList.add('icono-borrar');    
+    imgBorrar.classList.add('icono-borrar');
     imgBorrar.src = 'img/icono_borrar.svg';
 
     const imgEditar = document.createElement('IMG');
@@ -83,17 +113,50 @@ function mostrarProductoEnHTML(producto) {
     productosDivTodos.appendChild(divProductosCard);
 }
 
+function filtrarProductos(criterio) {
+    headerTodosProductos.textContent = 'Todos los productos';
+    
+    let criterioBusqueda = criterio.toLowerCase();
+    const listaFiltradaTodas = productos.filter(producto => {
+        let nombre = producto.nombre.toLowerCase();
+        if(nombre.indexOf(criterioBusqueda) !== -1) {
+            
+            return producto;
+        }
+    });
+
+    limpiarHtml();
+
+    if(listaFiltradaTodas.length > 0) {
+        listaFiltradaTodas.forEach(producto => {
+            mostrarProductoEnHTML(producto);
+        });
+    } else {
+        limpiarHtml();
+
+        headerTodosProductos.textContent = 'No hay productos';
+    }
+}
+
+function limpiarHtml() {
+    while(productosDivTodos.firstChild) {
+        productosDivTodos.removeChild(productosDivTodos.firstChild);
+    }
+}
+
 function agregarProducto() {
-    window.location.replace("agregar-producto.html");
+    window.location.replace('agregar-producto.html');
 }
 
 function borrarProducto(productoEliminar) {
-    eliminarProducto(Number(productoEliminar.getAttribute('data-id')));
+    if (window.confirm('¿Deseas eliminar el producto seleccionado?')) {
+        eliminarProducto(Number(productoEliminar.getAttribute('data-id')));
+    }
 }
 
 async function editarProducto(productoEditar) {
-    const idProducto = Number(productoEditar.getAttribute('data-id'));    
-    
-    window.location.replace(`agregar-producto.html?id=${idProducto}`);   
-    
+    if (window.confirm('¿Deseas editar el producto seleccionado?')) {
+        const idProducto = Number(productoEditar.getAttribute('data-id'));
+        window.location.replace(`agregar-producto.html?id=${idProducto}`);
+    }
 }

@@ -22,10 +22,12 @@
     background-color: var(--azul);
     color: var(--blanco);
     border: solid 1px var(--azul);
+    margin-bottom: 1.2rem;
     padding: 1.2rem;
     font-size: 1.4rem;
     font-weight: 600;
     width: 15.0rem;
+    cursor: pointer;
 }
 
 .productos-card .id-producto {

@@ -253,6 +253,7 @@ a {
     position: absolute;
     top: 6%;
     right: 35%;
+    cursor: pointer;
 }
 
 .icono-editar {
@@ -261,6 +262,7 @@ a {
     position: absolute;
     top: 6%;
     right: 10%;
+    cursor: pointer;
 }
 
 .productos-card h4 {

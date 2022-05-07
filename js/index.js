@@ -5,6 +5,11 @@ const inputBuscador = document.getElementById('input-buscador');
 const iconoBuscador = document.getElementById('icono-buscador');
 const loginDiv = document.getElementById('login-div');
 const logoDiv = document.getElementById('logo-div');
+const headerStarwars = document.getElementById('header-star-wars');
+const enlaceStarwarsVerTodo = document.getElementById('enlace-star-wars-ver-todo');
+const starwarsProductosHeader = document.getElementById('star-wars-productos-header');
+const consolasProductosHeader = document.getElementById('consolas-productos-header');
+const diversosProductosHeader = document.getElementById('diversos-productos-header');
 const productosDivStarwars = document.getElementById('productos-div-starwars');
 const productosDivConsolas = document.getElementById('productos-div-consolas');
 const productosDivDiversos = document.getElementById('productos-div-diversos');
@@ -63,9 +68,12 @@ function consolas() {
 }
 
 async function mostrarProductos() {
-    document.getElementById('star-wars-productos-header').style.display = 'flex';
-    document.getElementById('consolas-productos-header').style.display = 'flex';
-    document.getElementById('diversos-productos-header').style.display = 'flex';
+    starwarsProductosHeader.style.display = 'flex';
+    consolasProductosHeader.style.display = 'flex';
+    diversosProductosHeader.style.display = 'flex';
+    headerStarwars.textContent = 'Star Wars';
+    headerStarwars.style.paddingBottom = '0';
+    enlaceStarwarsVerTodo.style.display = 'flex';
     
     limpiarHtml();
     
@@ -79,6 +87,7 @@ function mostrarProductoEnHTML(producto) {
     const { id, nombre, precio, imagen, categoria } = producto;
 
     const divProductosCard = document.createElement('DIV');
+    divProductosCard.setAttribute('data-id', `${id}`);
     divProductosCard.classList.add('productos-card');
 
     const imgProducto = document.createElement('IMG');
@@ -97,7 +106,6 @@ function mostrarProductoEnHTML(producto) {
     divProducto.appendChild(precioProducto);
 
     const enlaceProducto = document.createElement('A');
-    enlaceProducto.setAttribute('data-id', `${id}`);
     enlaceProducto.setAttribute('href', `producto.html?id=${id}`);
 
     enlaceProducto.textContent = `Ver Producto`;
@@ -122,6 +130,10 @@ function mostrarProductoEnHTML(producto) {
 }
 
 function filtrarProductos(criterio) {
+    headerStarwars.textContent = 'Star Wars';
+    headerStarwars.style.paddingBottom = '0';
+    enlaceStarwarsVerTodo.style.display = 'flex';
+
     let criterioBusqueda = criterio.toLowerCase();
     const listaFiltradaTodas = productos.filter(producto => {
         let nombre = producto.nombre.toLowerCase();
@@ -132,13 +144,23 @@ function filtrarProductos(criterio) {
 
     limpiarHtml();
 
-    listaFiltradaTodas.forEach(producto => {
-        mostrarProductoEnHTML(producto);
-    });
+    if(listaFiltradaTodas.length > 0) {
+        listaFiltradaTodas.forEach(producto => {
+            mostrarProductoEnHTML(producto);
+        });
+    
+        limpiarStarWars();
+        limpiarConsolas();
+        limpiarDiversos();
 
-    limpiarStarWars();
-    limpiarConsolas();
-    limpiarDiversos();
+    } else {
+        limpiarConsolas();
+        limpiarDiversos();
+
+        headerStarwars.textContent = 'No hay productos';
+        headerStarwars.style.paddingBottom = '1.6rem';
+        enlaceStarwarsVerTodo.style.display = 'none';
+    }
 }
 
 function limpiarHtml() {
@@ -157,18 +179,18 @@ function limpiarHtml() {
 
 function limpiarStarWars() {
     if(productosDivStarwars.firstElementChild === null) {
-        document.getElementById('star-wars-productos-header').style.display = 'none';
+        starwarsProductosHeader.style.display = 'none';
     }
 }
 
 function limpiarConsolas() {
     if(productosDivConsolas.firstElementChild === null) {
-        document.getElementById('consolas-productos-header').style.display = 'none';
+        consolasProductosHeader.style.display = 'none';
     }
 }
 
 function limpiarDiversos() {
     if(productosDivDiversos.firstElementChild === null) {
-        document.getElementById('diversos-productos-header').style.display = 'none';
+        diversosProductosHeader.style.display = 'none';
     }
 }
