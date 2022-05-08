@@ -33,7 +33,7 @@ function verificarLogin() {
         btnLogin.textContent = 'Logout';
         btnLogin.addEventListener('click', () => {
             localStorage.clear();
-            window.location.reload();
+            window.location.replace("index.html");
         });
     }
 }
