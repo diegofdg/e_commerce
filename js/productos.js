@@ -9,6 +9,7 @@ const btnAgregar = document.getElementById('btn-agregar');
 const productosDivTodos = document.getElementById('productos-div-todos');
 let mostrarHeader = true;
 let productos = [];
+let idProductos = [ 12345, 23456, 34567, 45678, 56789, 67890, 78901, 89012, 90123, 10123, 11234, 12456, 13567, 14678, 15789, 16890, 17901, 18012 ];
 
 document.addEventListener('DOMContentLoaded', () => {
     iniciarApp();
@@ -120,7 +121,6 @@ function filtrarProductos(criterio) {
     const listaFiltradaTodas = productos.filter(producto => {
         let nombre = producto.nombre.toLowerCase();
         if(nombre.indexOf(criterioBusqueda) !== -1) {
-            
             return producto;
         }
     });
@@ -149,14 +149,28 @@ function agregarProducto() {
 }
 
 function borrarProducto(productoEliminar) {
-    if (window.confirm('¿Deseas eliminar el producto seleccionado?')) {
-        eliminarProducto(Number(productoEliminar.getAttribute('data-id')));
+    let idProducto = Number(productoEliminar.getAttribute('data-id'))
+    let permisoEliminar = idProductos.includes(idProducto);
+
+    if(!permisoEliminar) {
+        if (window.confirm('¿Deseas eliminar el producto seleccionado?')) {
+            eliminarProducto(Number(productoEliminar.getAttribute('data-id')));
+        }
+    } else {
+        alert('Lo siento, Usted no tiene permisos para realizar tal operación');
     }
 }
 
 async function editarProducto(productoEditar) {
-    if (window.confirm('¿Deseas editar el producto seleccionado?')) {
-        const idProducto = Number(productoEditar.getAttribute('data-id'));
-        window.location.replace(`agregar-producto.html?id=${idProducto}`);
+    let idProducto = Number(productoEliminar.getAttribute('data-id'))
+    let permisoEditar = idProductos.includes(idProducto);
+
+    if(!permisoEditar) {
+        if (window.confirm('¿Deseas editar el producto seleccionado?')) {
+            const idProducto = Number(productoEditar.getAttribute('data-id'));
+            window.location.replace(`agregar-producto.html?id=${idProducto}`);
+        }
+    } else {
+        alert('Lo siento, Usted no tiene permisos para realizar tal operación');
     }
 }

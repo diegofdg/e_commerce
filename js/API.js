@@ -1,10 +1,12 @@
 const url = 'http://localhost:4000/productos';
+//const url = 'https://backend-json-server.herokuapp.com/productos';
 
 export const obtenerProductos = async () => {
     try {
         const resultado =  await fetch(url);
         const productos = await resultado.json();
         return productos;
+
     } catch (error) {
         console.log(error);
     }
