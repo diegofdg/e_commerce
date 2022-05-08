@@ -221,7 +221,7 @@ async function agregarProducto(e) {
     const descripcion = inputAgregarMensaje.value;
     let imagen;
     
-    if(imagenArchivo[0] === undefined) {
+    if(errorAgregarImagen) {
         imagen = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTMyIDI4LjQ0NDRWMy41NTU1NkMzMiAxLjYgMzAuNCAwIDI4LjQ0NDQgMEgzLjU1NTU2QzEuNiAwIDAgMS42IDAgMy41NTU1NlYyOC40NDQ0QzAgMzAuNCAxLjYgMzIgMy41NTU1NiAzMkgyOC40NDQ0QzMwLjQgMzIgMzIgMzAuNCAzMiAyOC40NDQ0Wk05Ljc3Nzc4IDE4LjY2NjdMMTQuMjIyMiAyNC4wMTc4TDIwLjQ0NDQgMTZMMjguNDQ0NCAyNi42NjY3SDMuNTU1NTZMOS43Nzc3OCAxOC42NjY3WiIgZmlsbD0iI0M4QzhDOCIvPgo8L3N2Zz4K"
     } else {
         imagen = imagenArchivo[0];

@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function iniciarApp() {
     agregarEventListeners();
+    verificarLogin();
     btnContactoEnviar.disabled = true;
     btnContactoEnviar.classList.add('disabled');
 };
@@ -24,6 +25,17 @@ function agregarEventListeners() {
     inputContactoNombre.addEventListener('keyup', validarMensaje);
     inputContactoMensaje.addEventListener('keyup', validarMensaje);
     btnContactoEnviar.addEventListener('click', enviarMensaje);
+}
+
+function verificarLogin() {
+    if(localStorage.getItem('alurageek') === 'correo@correo.com') {
+        btnLogin.removeEventListener('click', login);
+        btnLogin.textContent = 'Logout';
+        btnLogin.addEventListener('click', () => {
+            localStorage.clear();
+            window.location.reload();
+        });
+    }
 }
 
 function login() {

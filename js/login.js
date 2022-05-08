@@ -76,6 +76,7 @@ function submitLogin(e) {
 
     if(inputEmail.value == 'correo@correo.com') {
         if(inputPassword.value == '123456') {
+            localStorage.setItem('alurageek', 'correo@correo.com');
             window.location.replace('productos.html');
         }
     } else {

@@ -3,6 +3,7 @@ import { obtenerProductos, eliminarProducto } from './API.js';
 const inputBuscador = document.getElementById('input-buscador');
 const iconoBuscador = document.getElementById('icono-buscador');
 const loginDiv = document.getElementById('login-div');
+const btnLogin = document.getElementById('btn-login');
 const logoDiv = document.getElementById('logo-div');
 const headerTodosProductos = document.getElementById('header-todos-productos');
 const btnAgregar = document.getElementById('btn-agregar');
@@ -18,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function iniciarApp() {
     agregarEventListeners();
     mostrarProductos();
+    verificarLogin();
 };
 
 function agregarEventListeners() {
@@ -75,6 +77,7 @@ function mostrarProductoEnHTML(producto) {
     imgProducto.classList.add('imagen-producto');
     imgProducto.src = `${imagen}`;
     imgProducto.alt = `imagen ${nombre}`;
+    imgProducto.loading = 'lazy';
 
     const imgBorrar = document.createElement('IMG');
     imgBorrar.addEventListener('click', (e) => {
@@ -145,32 +148,48 @@ function limpiarHtml() {
 }
 
 function agregarProducto() {
-    window.location.replace('agregar-producto.html');
+    if(localStorage.getItem('alurageek') === 'correo@correo.com') {
+        window.location.replace('agregar-producto.html');
+    } else {
+        alert('Para poder agregar productos debes hacer login');
+    }
 }
 
 function borrarProducto(productoEliminar) {
-    let idProducto = Number(productoEliminar.getAttribute('data-id'))
-    let permisoEliminar = idProductos.includes(idProducto);
+    if(localStorage.getItem('alurageek') === 'correo@correo.com') {
+        let idProducto = Number(productoEliminar.getAttribute('data-id'))
+        let permisoEliminar = idProductos.includes(idProducto);
 
-    if(!permisoEliminar) {
-        if (window.confirm('¿Deseas eliminar el producto seleccionado?')) {
-            eliminarProducto(Number(productoEliminar.getAttribute('data-id')));
+        if(!permisoEliminar) {
+            if (window.confirm('¿Deseas eliminar el producto seleccionado?')) {
+                eliminarProducto(idProducto);
+                alert('El producto se ha eliminado correctamente')
+                window.location.replace('productos.html');
+            }
+        } else {
+            alert('Lo siento, Usted no tiene permisos para realizar tal operación');
         }
+        
     } else {
-        alert('Lo siento, Usted no tiene permisos para realizar tal operación');
+        alert('Para poder eliminar productos debes hacer login');        
     }
 }
 
 async function editarProducto(productoEditar) {
-    let idProducto = Number(productoEliminar.getAttribute('data-id'))
-    let permisoEditar = idProductos.includes(idProducto);
-
-    if(!permisoEditar) {
-        if (window.confirm('¿Deseas editar el producto seleccionado?')) {
-            const idProducto = Number(productoEditar.getAttribute('data-id'));
-            window.location.replace(`agregar-producto.html?id=${idProducto}`);
+    if(localStorage.getItem('alurageek') === 'correo@correo.com') {
+        let idProducto = Number(productoEditar.getAttribute('data-id'))
+        let permisoEditar = idProductos.includes(idProducto);
+    
+        if(!permisoEditar) {
+            if (window.confirm('¿Deseas editar el producto seleccionado?')) {
+                editarProducto(idProducto);
+                window.location.replace(`agregar-producto.html?id=${idProducto}`);
+            }
+        } else {
+            alert('Lo siento, Usted no tiene permisos para realizar tal operación');
         }
+
     } else {
-        alert('Lo siento, Usted no tiene permisos para realizar tal operación');
+        alert('Para poder editar productos debes hacer login');        
     }
 }

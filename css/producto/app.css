@@ -1,6 +1,10 @@
 .hero-producto-div img {
+    display: block;
+    margin: 0 auto;
     width: 100%;
+    max-width: 56rem;
     height: 19.2rem;
+    object-fit: cover;
 }
 
 .hero-producto-div .contenedor h4 {

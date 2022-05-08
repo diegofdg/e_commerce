@@ -1,4 +1,3 @@
-//const url = 'http://localhost:4000/productos';
 const url = 'https://backend-json-server.herokuapp.com/productos';
 
 export const obtenerProductos = async () => {
