@@ -7,6 +7,7 @@
 
     .drop-zone-agregar {
         display: flex;
+        justify-content: center;
     }
     
     .drop-zone-hide {
@@ -16,6 +17,11 @@
     .drop-zone img {
         content: url("../../img/icono_imagen.svg");
         width: 3.2rem;
+    }
+
+    .campo-agregar,
+    .btn-enviar {
+        max-width: 55.9rem;
     }
 
     .texto-movil {

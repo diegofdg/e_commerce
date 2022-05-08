@@ -69,9 +69,8 @@
 
 #btn-buscar-archivo:before {
     content: "Busque en su computador";
-    
 }
-  
+
 @media (max-width: 1024px) and (min-width:768px) {
     #btn-buscar-archivo:before {
         content: "Busque en su dispositivo";
@@ -118,6 +117,15 @@
 .campo-agregar.mensaje {
     height: 81px;
     padding-top: 1.6rem;
+}
+
+#categoria {
+    width: 100%;
+    border: none;    
+}
+
+#categoria:focus {
+    outline: none;
 }
 
 .contenedor-btn-agregar {

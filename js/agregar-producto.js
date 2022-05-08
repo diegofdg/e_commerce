@@ -10,11 +10,12 @@ const btnAgregarEnviar = document.getElementById('btn-agregar-enviar');
 const campoAgregarNombre = document.getElementById('campo-agregar-nombre');
 const campoAgregarPrecio = document.getElementById('campo-agregar-precio');
 const campoAgregarMensaje = document.getElementById('campo-agregar-mensaje');
+const campoAgregarCategoria = document.getElementById('campo-agregar-categoria');
 const selectCategoria = document.getElementById('categoria');
-const contenedorCamposAgregar = document.getElementById('contenedor-campos-agregar');
-const iconoAgregarImagen = document.getElementById('icono-agregar-imagen');
+const tituloAgregarEditar = document.getElementById('titulo-agregar-editar');
 const dropZone = document.getElementById('drop-zone');
 const dropZoneDiv = document.getElementById('drop-zone-div');
+
 let archivo;
 let imagenArchivo = [];
 let editar = false;
@@ -26,22 +27,32 @@ let errorAgregarCategoria = true;
 let errorAgregarPrecio = true;
 let errorAgregarImagen = true;
 
-iniciarApp();
+document.addEventListener('DOMContentLoaded', () => {
+    iniciarApp();
+});
 
 async function iniciarApp() {
     const parametrosURL = new URLSearchParams(window.location.search);
-    idProducto = parseInt(parametrosURL.get('id'));
+    idProducto = parametrosURL.get('id');
+
     agregarEventListeners();
     btnAgregarEnviar.disabled = true;
     btnAgregarEnviar.classList.add('disabled');
 
-    if(idProducto !== NaN) {
+    if(idProducto !== null) {
         editar = true;
+        errorAgregarNombre = false;
+        errorAgregarMensaje = false;
+        errorAgregarCategoria = false;
+        errorAgregarPrecio = false;
+        errorAgregarImagen = false;
         btnAgregarEnviar.disabled = false;
         btnAgregarEnviar.classList.remove('disabled');
-        const producto = await obtenerProducto(idProducto);
+        tituloAgregarEditar.textContent = 'Edita el producto';
+        btnAgregarEnviar.textContent = 'Editar producto';
+        const producto = await obtenerProducto(parseInt(idProducto));
         mostrarProducto(producto);
-    }    
+    }
 };
 
 function agregarEventListeners() {
@@ -53,7 +64,7 @@ function agregarEventListeners() {
     inputAgregarMensaje.addEventListener('keyup', validarProducto);
     inputAgregarPrecio.addEventListener('keyup', validarProducto);
     selectCategoria.addEventListener('change', validarProducto);
-    formularioAgregar.addEventListener('submit', agregarProducto);
+    btnAgregarEnviar.addEventListener('click', agregarProducto);
 }
 
 function permitirDrop(e) {
@@ -70,15 +81,16 @@ function leerImagen() {
     let tipoArchivo = archivo.type;
     let regexSoloImagenes = ["image/jpeg", "image/jpg", "image/png", "image/svg+xml"];
 
-    if (regexSoloImagenes.includes(tipoArchivo)) {
+    if(regexSoloImagenes.includes(tipoArchivo)) {
         let fileReader = new FileReader();
         fileReader.readAsDataURL(archivo);
-        fileReader.onload = () => {            
+        fileReader.onload = () => {
+            imagenArchivo = [];
             imagenArchivo.push(fileReader.result);
             dropZone.style.backgroundImage="url('" + imagenArchivo[0] + "')";
             dropZone.style.backgroundSize= "cover";
             dropZone.style.backgroundRepeat= "no-repeat";
-            dropZone.style.backgroundPosition= "center center"
+            dropZone.style.backgroundPosition= "center center";
             dropZoneDiv.style.display="none";
         }
     } else {
@@ -125,7 +137,6 @@ function validarProducto(e) {
             }
 
             errorAgregarNombre = false;
-
             break;
 
         case 'input-agregar-precio':
@@ -140,7 +151,6 @@ function validarProducto(e) {
             }
 
             errorAgregarPrecio = false;
-
             break;
 
         case 'input-agregar-mensaje':
@@ -162,7 +172,6 @@ function validarProducto(e) {
             }
 
             errorAgregarMensaje = false;
-
             break;
         
         case 'categoria':
@@ -175,16 +184,15 @@ function validarProducto(e) {
             }
 
             errorAgregarCategoria = false;
-
             break;
 
         default:
             return;
     }
 
-    if(!errorAgregarImagen && !errorAgregarNombre && !errorAgregarPrecio && !errorAgregarMensaje &&!errorAgregarCategoria) {
+    if(!errorAgregarNombre && !errorAgregarPrecio && !errorAgregarMensaje &&!errorAgregarCategoria) {
         btnAgregarEnviar.disabled = false;
-        btnAgregarEnviar.classList.remove('disabled');        
+        btnAgregarEnviar.classList.remove('disabled');
     }
 }
 
@@ -211,7 +219,13 @@ async function agregarProducto(e) {
     const nombre = inputAgregarNombre.value;
     const precio = inputAgregarPrecio.value;
     const descripcion = inputAgregarMensaje.value;
-    const imagen = imagenArchivo[0];    
+    let imagen;
+    
+    if(imagenArchivo[0] === undefined) {
+        imagen = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTMyIDI4LjQ0NDRWMy41NTU1NkMzMiAxLjYgMzAuNCAwIDI4LjQ0NDQgMEgzLjU1NTU2QzEuNiAwIDAgMS42IDAgMy41NTU1NlYyOC40NDQ0QzAgMzAuNCAxLjYgMzIgMy41NTU1NiAzMkgyOC40NDQ0QzMwLjQgMzIgMzIgMzAuNCAzMiAyOC40NDQ0Wk05Ljc3Nzc4IDE4LjY2NjdMMTQuMjIyMiAyNC4wMTc4TDIwLjQ0NDQgMTZMMjguNDQ0NCAyNi42NjY3SDMuNTU1NTZMOS43Nzc3OCAxOC42NjY3WiIgZmlsbD0iI0M4QzhDOCIvPgo8L3N2Zz4K"
+    } else {
+        imagen = imagenArchivo[0];
+    }
 
     const productoNuevo = {
         id: idProducto,
@@ -222,33 +236,35 @@ async function agregarProducto(e) {
         imagen
     }
 
-    console.log(productoNuevo);
-    console.log(editar);
-    
-    
-    
-
     if(editar) {
-        console.log('entro aca');
-        await modificarProducto(productoNuevo);
-    } else {
-        await nuevoProducto(productoNuevo);
-    }    
-    
-    const spinner = document.querySelector('#spinner-agregar');
-    spinner.style.display = 'flex';
+        const spinner = document.querySelector('#spinner-agregar');
+        spinner.style.display = 'flex';
 
-    setTimeout(()=>{
-        spinner.style.display = 'none';
-        mostrarMensaje('El producto se ha agregado exitosamente', 'exito', campoAgregarMensaje);        
-    }, 3000);
+        await modificarProducto(productoNuevo);
+
+        setTimeout(()=>{
+            spinner.style.display = 'none';
+            mostrarMensaje('El producto se ha modificado exitosamente', 'exito', campoAgregarMensaje);
+        }, 3000);
+
+    } else {
+        const spinner = document.querySelector('#spinner-agregar');
+        spinner.style.display = 'flex';
+        
+        await nuevoProducto(productoNuevo);
+        
+        setTimeout(()=>{
+            spinner.style.display = 'none';
+            mostrarMensaje('El producto se ha agregado exitosamente', 'exito', campoAgregarMensaje);
+        }, 3000);
+    }
 }
 
 function mostrarMensaje(mensaje, tipo, origen) {
     let mostrarMensaje;
     if(tipo == 'error') {
         mostrarMensaje = document.querySelector('.error');
-    } else if (tipo == 'exito'){
+    } else if (tipo == 'exito') {
         mostrarMensaje = document.querySelector('.exito');
     }
     
@@ -261,12 +277,13 @@ function mostrarMensaje(mensaje, tipo, origen) {
         
         setTimeout(()=> {
             divMensaje.remove();
-            if (tipo == 'exito') {
+            if(tipo == 'exito') {
                 formularioAgregar.reset();
                 dropZone.style.backgroundImage="none";
                 dropZoneDiv.style.display="flex";
                 btnAgregarEnviar.disabled = true;
                 btnAgregarEnviar.classList.add('disabled');
+                window.location.href = 'productos.html';
             }
         }, 3000);
     }
@@ -274,13 +291,12 @@ function mostrarMensaje(mensaje, tipo, origen) {
 
 function mostrarProducto(producto) {
     const { nombre, precio, descripcion, imagen, categoria } = producto;
-    console.log(producto);    
 
-    imagenArchivo.push(producto.imagen);    
+    imagenArchivo.push(imagen);
     dropZone.style.backgroundImage="url('" + imagenArchivo[0] + "')";
     dropZone.style.backgroundSize= "cover";
     dropZone.style.backgroundRepeat= "no-repeat";
-    dropZone.style.backgroundPosition= "center center"
+    dropZone.style.backgroundPosition= "center center";
     dropZoneDiv.style.display="none";
 
     inputAgregarNombre.value = nombre;
@@ -302,8 +318,4 @@ function mostrarProducto(producto) {
         default:
             break;
     }
-    
-    
-    
-    
 }

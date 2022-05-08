@@ -6,7 +6,7 @@ export const obtenerProductos = async () => {
         const productos = await resultado.json();
         return productos;
     } catch (error) {
-        console.log(error);        
+        console.log(error);
     }
 }
 
@@ -17,23 +17,23 @@ export const obtenerProducto = async id => {
         return producto;
         
     } catch (error) {
-        console.log(error);        
+        console.log(error);
     }
 }
 
 export const nuevoProducto = async producto => {
     try {
-        await fetch(url, {
+        const resultado = await fetch(url, {
             method: 'POST',
             body: JSON.stringify(producto),
             headers: {
-                'Content-Type': 'application/json' 
+                'Content-Type': 'application/json'
             }
         });
-        //window.location.href = 'index.html';
-        
+        return resultado;
+
     } catch (error) {
-        console.log(error);        
+        console.log(error);
     }
 }
 
@@ -44,7 +44,7 @@ export const eliminarProducto = async id => {
         });
         
     } catch (error) {
-        console.log(error);        
+        console.log(error);
     }
 }
 
@@ -56,9 +56,9 @@ export const modificarProducto = async producto => {
             headers: {
                 'Content-Type': 'application/json'
             }
-        });  
-        //window.location.href = 'index.html';              
+        });
+        
     } catch (error) {
-        console.log(error);        
+        console.log(error);
     }
 }
